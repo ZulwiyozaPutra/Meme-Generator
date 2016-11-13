@@ -19,7 +19,32 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    @IBAction func importImage(_ sender: Any) {
+        let nextController = UIImagePickerController()
+        self.present(nextController, animated: true, completion: nil)
+    }
+    
+    @IBAction func shareImage(_ sender: Any) {
+        let image = UIImage()
+        let nextController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        self.present(nextController, animated: true, completion: nil)
+    }
+    
+    @IBAction func other(_ sender: Any) {
+        let nextController = UIAlertController()
+        nextController.title = "Title test alert"
+        nextController.message = "Message test alert"
+        
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) {
+            action in self.dismiss(animated: true, completion: nil)
+        }
+        
+        nextController.addAction(okAction)
+        
+        self.present(nextController, animated: true, completion: nil)
+    }
+    
 
 }
 
