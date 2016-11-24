@@ -127,9 +127,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     //Tells the delegate that the user cancelled the pick operation.
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
-        dismiss(animated: true, completion: nil)
-        
+        dismiss(animated: true, completion: nil)        
     }
     
     //Setup UIImagePickerController
