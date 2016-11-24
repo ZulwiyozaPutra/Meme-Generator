@@ -11,26 +11,40 @@ import UIKit
 
 class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
+    
+    //VARIABLES//
+    
     @IBOutlet weak var imagePickedView: UIImageView!
     @IBOutlet weak var topCaptionTextField: UITextField!
     @IBOutlet weak var bottomCaptionTextField: UITextField!
     @IBOutlet weak var helpingInformationLabel: UILabel!
-    
     @IBOutlet weak var shareButtonOutlet: UIBarButtonItem!
+    @IBOutlet var mainView: UIView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var toolbar: UIToolbar!
     
+    //Constraints for Image View
     @IBOutlet weak var equalWidthConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var equalHeightConstraint: NSLayoutConstraint!
     
 
-    
-    let memeTextAttributes:[String: Any] = [
+    //Attributes for Meme Words
+    let memeTextAttributesPotrait:[String: Any] = [
         NSStrokeColorAttributeName: UIColor.black,
         NSForegroundColorAttributeName: UIColor.white,
-        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 35)!,
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 30)!,
+        NSStrokeWidthAttributeName: -4.0]
+    
+    let memeTextAttributesLandscape:[String: Any] = [
+        NSStrokeColorAttributeName: UIColor.black,
+        NSForegroundColorAttributeName: UIColor.white,
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 23)!,
         NSStrokeWidthAttributeName: -4.0]
     
     
+    //OVERRIDING FUNCTIONS//
+    
+    //Overriding Functions
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
@@ -43,8 +57,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         self.bottomCaptionTextField.delegate = self
         
         viewSetup(initialStatus: true)
-        textFieldTextAttributesSetup()
-        
+        textFieldTextAttributesPotraitSetup()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,11 +70,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         func landscapeMode() {
             view.removeConstraint(equalWidthConstraint)
             view.addConstraint(equalHeightConstraint)
+            textFieldTextAttributesLandscapeSetup()
         }
         
         func potraitMode() {
             view.removeConstraint(equalHeightConstraint)
             view.addConstraint(equalWidthConstraint)
+            textFieldTextAttributesPotraitSetup()
         }
 
         if UIDevice.current.orientation.isLandscape {
@@ -72,27 +87,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         }
     }
     
+    
+    //FUNCTIONS//
+    
+    //Tells delegate to limit textfield for 23 max chars
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         var newText = textField.text! as NSString
         newText = newText.replacingCharacters(in: range, with: string) as NSString
-        return newText.length <= 18
-    }
-    
-    //Setup Text Field Text Attributes
-    func textFieldTextAttributesSetup() {
-        topCaptionTextField.defaultTextAttributes = memeTextAttributes
-        topCaptionTextField.textAlignment = .center
-        bottomCaptionTextField.defaultTextAttributes = memeTextAttributes
-        bottomCaptionTextField.textAlignment = .center
-    }
-    
-    //Setup view
-    func viewSetup(initialStatus: Bool) -> Void {
-        topCaptionTextField.isHidden = initialStatus
-        bottomCaptionTextField.isHidden = initialStatus
-        helpingInformationLabel.isHidden = !initialStatus
-        shareButtonOutlet.isEnabled = !initialStatus
-        
+        return newText.length <= 23
     }
     
     //Tells delegate to clear text field when editing di begin
@@ -127,7 +129,34 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     //Tells the delegate that the user cancelled the pick operation.
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //UISETUP//
+
+    
+    //Setup Text Field Text Attributes
+    func textFieldTextAttributesPotraitSetup() {
+        topCaptionTextField.defaultTextAttributes = memeTextAttributesPotrait
+        topCaptionTextField.textAlignment = .center
+        bottomCaptionTextField.defaultTextAttributes = memeTextAttributesPotrait
+        bottomCaptionTextField.textAlignment = .center
+    }
+    
+    func textFieldTextAttributesLandscapeSetup() {
+        topCaptionTextField.defaultTextAttributes = memeTextAttributesLandscape
+        topCaptionTextField.textAlignment = .center
+        bottomCaptionTextField.defaultTextAttributes = memeTextAttributesLandscape
+        bottomCaptionTextField.textAlignment = .center
+    }
+    
+    //Setup view
+    func viewSetup(initialStatus: Bool) -> Void {
+        topCaptionTextField.isHidden = initialStatus
+        bottomCaptionTextField.isHidden = initialStatus
+        helpingInformationLabel.isHidden = !initialStatus
+        shareButtonOutlet.isEnabled = !initialStatus
+        
     }
     
     //Setup UIImagePickerController
@@ -139,6 +168,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         present(imagePickerController, animated: true, completion: nil)
     }
     
+    
+    //HELPERS//
+    
     //Picking an image action from Media Library
     func pickAnImageFromMediaLibrary() {
         setupImagePickerController(sourceType: .photoLibrary)
@@ -148,7 +180,44 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func pickAnImageFromCamera() {
         setupImagePickerController(sourceType: .camera)
     }
+    
+    func generateMemedImage() -> UIImage {
+        
+        //Hide Toolbar and Navbar
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.toolbar.isHidden = true
+        self.mainView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.0)
+        self.containerView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.0)
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        //TODO: Show toolbar and navbar
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.toolbar.isHidden = false
+        self.mainView.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
+        self.containerView.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
+        
+        return memedImage
+    }
+    
+    func save() {
+        // Create the meme
+        let meme = Meme(topCaption: topCaptionTextField.text!, bottomCaption: bottomCaptionTextField.text!, originalImage: imagePickedView.image!, memedImage: generateMemedImage())
+        
+        let image = meme.memedImage
+        let nextController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        self.present(nextController, animated: true, completion: nil)
+        
+    }
 
+    
+    
+    //ACTIONS//
+    
     //importButton action function
     @IBAction func importButton(_ sender: Any) {
         
@@ -189,31 +258,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
     }
     
-    func generateMemedImage() -> UIImage {
-        
-        //Hide Toolbar and Navbar
-        
-        // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        //TODO: Show toolbar and navbar
-        
-        return memedImage
-    }
-    
-    func save() {
-        // Create the meme
-        let meme = Meme(topCaption: topCaptionTextField.text!, bottomCaption: bottomCaptionTextField.text!, originalImage: imagePickedView.image!, memedImage: generateMemedImage())
-        
-        let image = meme.memedImage
-        let nextController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-        self.present(nextController, animated: true, completion: nil)
-        
-    }
-    
     @IBAction func shareButton(_ sender: Any) {
         save()
     }
@@ -224,12 +268,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func keyboardWillAppear(_ notification:Notification) {
         if bottomCaptionTextField.isEditing == true {
             view.frame.origin.y = 0 - getKeyboardHeight(notification)
+            self.toolbar.isHidden = true
         }
     }
     
     //Setup view before keyboard disappeared
     func keyboardWillDisappear(_ notification: Notification) {
         view.frame.origin.y = 0
+        self.toolbar.isHidden = false
     }
     
     //Getting keyboard height

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Meme Editor View Controller-->
+        <!--Meme Generator-->
         <scene sceneID="UKQ-ji-EHP">
             <objects>
                 <viewController id="1Ah-VM-2x9" customClass="MemeEditorViewController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
@@ -28,7 +28,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap + to generate a new meme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSX-DX-cc1">
                                         <rect key="frame" x="69" y="269" width="237" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a1d-TK-rKV">
@@ -96,7 +96,7 @@
                             <constraint firstItem="Oby-uw-k6L" firstAttribute="bottom" secondItem="qWy-mL-nPb" secondAttribute="top" id="wNV-lB-bpS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="2cK-BB-KTR" customClass="memec">
+                    <navigationItem key="navigationItem" title="Meme Generator" id="2cK-BB-KTR" customClass="memec">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nCn-mk-Oah">
                             <connections>
                                 <action selector="importButton:" destination="1Ah-VM-2x9" id="by9-nu-BGk"/>
@@ -105,11 +105,14 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomCaptionTextField" destination="bFw-aE-bNY" id="LGL-kc-M70"/>
+                        <outlet property="containerView" destination="SqS-kx-z7d" id="11U-HH-fvR"/>
                         <outlet property="equalHeightConstraint" destination="yhZ-IV-5Uf" id="OuQ-VX-hg4"/>
                         <outlet property="equalWidthConstraint" destination="m4K-qv-EH3" id="DIL-QN-h3p"/>
                         <outlet property="helpingInformationLabel" destination="PSX-DX-cc1" id="8DQ-8Q-CWa"/>
                         <outlet property="imagePickedView" destination="a1d-TK-rKV" id="7Sf-Wa-G7N"/>
+                        <outlet property="mainView" destination="CeS-hv-PFM" id="Jih-Fc-nEA"/>
                         <outlet property="shareButtonOutlet" destination="tHo-nU-1ZV" id="4OO-i5-XuS"/>
+                        <outlet property="toolbar" destination="Oby-uw-k6L" id="vuJ-Xt-zc6"/>
                         <outlet property="topCaptionTextField" destination="N7H-1W-XQb" id="PwY-ES-ORD"/>
                     </connections>
                 </viewController>
