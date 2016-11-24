@@ -9,18 +9,40 @@
 import Foundation
 import UIKit
 
-class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var imagePickedView: UIImageView!
+    @IBOutlet weak var topCaptionTextField: UITextField!
+    @IBOutlet weak var bottomCaptionTextField: UITextField!
+    @IBOutlet weak var helpingInformationLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        setupView(initialStatus: true)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //Setup view
+    func setupView(initialStatus: Bool) -> Void {
+        topCaptionTextField.isHidden = initialStatus
+        bottomCaptionTextField.isHidden = initialStatus
+        helpingInformationLabel.isHidden = !initialStatus
+        
+    }
+    
+    //Tells delegate to clear text field when editing di begin
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.topCaptionTextField.text = ""
+    }
+    
+    //Tells delegate to dismiss keyboard when return is tapped
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
     
     //Tells the delegate that the user picked a still image or movie.
@@ -31,6 +53,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         }
         
         dismiss(animated: true, completion: nil)
+        
+        setupView(initialStatus: false)
         
     }
     
