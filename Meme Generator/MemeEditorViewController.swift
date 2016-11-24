@@ -149,6 +149,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
     }
     
+    func save() {
+        // Create the meme
+        let meme = Meme(topCaption: topCaptionTextField.text, bottomCaption: bottomCaptionTextField.text, originalImage: imagePickedView.image, memedImage: memedImage)
+    }
+    
     //Keyboard adjustments
     
     //Setup view before keyboard appeared
@@ -181,6 +186,18 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
+}
 
+struct Meme {
+    var topCaption: String
+    var bottomCaption: String
+    var originalImage: UIImage
+    var memedImage: UIImage
     
+    init(topCaption: String, bottomCaption: String, originalImage: UIImage, memedImage: UIImage) {
+        self.topCaption = topCaption
+        self.bottomCaption = bottomCaption
+        self.originalImage = originalImage
+        self.memedImage = memedImage
+    }
 }
