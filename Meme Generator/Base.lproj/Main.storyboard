@@ -35,17 +35,17 @@
                                     <constraint firstAttribute="height" constant="538" id="E43-vv-zBJ"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="230" translatesAutoresizingMaskIntoConstraints="NO" id="vba-fP-JCh">
-                                <rect key="frame" x="16" y="201" width="343" height="264"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="240" translatesAutoresizingMaskIntoConstraints="NO" id="vba-fP-JCh">
+                                <rect key="frame" x="16" y="196" width="343" height="274"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP CAPTION" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N7H-1W-XQb">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP CAPTION" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N7H-1W-XQb">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM CAPTION" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFw-aE-bNY">
-                                        <rect key="frame" x="0.0" y="247" width="343" height="17"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM CAPTION" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFw-aE-bNY">
+                                        <rect key="frame" x="0.0" y="257" width="343" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
