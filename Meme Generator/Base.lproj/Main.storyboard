@@ -6,56 +6,10 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3s-Dp-OfA">
-                                <rect key="frame" x="143" y="318" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Import Image"/>
-                                <connections>
-                                    <action selector="importImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7KZ-BO-Lq1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dj3-Vc-rZG">
-                                <rect key="frame" x="169" y="394" width="40" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Other"/>
-                                <connections>
-                                    <action selector="other:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2D1-LB-dU0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geH-K1-qiR">
-                                <rect key="frame" x="145" y="356" width="86" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Share Image"/>
-                                <connections>
-                                    <action selector="shareImage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uPf-Bd-L7A"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Szm-Wo-jvg">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="JLc-5L-i9W"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2398" y="-4"/>
-        </scene>
         <!--Meme Editor View Controller-->
         <scene sceneID="UKQ-ji-EHP">
             <objects>
@@ -81,26 +35,32 @@
                                     <constraint firstAttribute="height" constant="538" id="E43-vv-zBJ"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Top Caption" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N7H-1W-XQb">
-                                <rect key="frame" x="139" y="161" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bottom Caption" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFw-aE-bNY">
-                                <rect key="frame" x="122" y="475" width="131" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="230" translatesAutoresizingMaskIntoConstraints="NO" id="vba-fP-JCh">
+                                <rect key="frame" x="16" y="201" width="343" height="264"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP CAPTION" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N7H-1W-XQb">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM CAPTION" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFw-aE-bNY">
+                                        <rect key="frame" x="0.0" y="247" width="343" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vba-fP-JCh" firstAttribute="leading" secondItem="CeS-hv-PFM" secondAttribute="leadingMargin" id="69j-Sc-lfD"/>
                             <constraint firstItem="a1d-TK-rKV" firstAttribute="leading" secondItem="CeS-hv-PFM" secondAttribute="leading" id="FOo-fP-AHn"/>
                             <constraint firstItem="a1d-TK-rKV" firstAttribute="top" secondItem="KFG-cz-bqV" secondAttribute="bottom" id="GnX-9Z-dxF"/>
+                            <constraint firstItem="vba-fP-JCh" firstAttribute="centerY" secondItem="CeS-hv-PFM" secondAttribute="centerY" id="nrL-8L-bfS"/>
                             <constraint firstAttribute="trailing" secondItem="a1d-TK-rKV" secondAttribute="trailing" id="uaL-gU-kXS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vba-fP-JCh" secondAttribute="trailing" id="zf6-aa-p8o"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2cK-BB-KTR" customClass="memec">

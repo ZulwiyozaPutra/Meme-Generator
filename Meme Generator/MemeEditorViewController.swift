@@ -16,18 +16,36 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var bottomCaptionTextField: UITextField!
     @IBOutlet weak var helpingInformationLabel: UILabel!
     
+    let memeTextAttributes:[String: Any] = [
+        NSStrokeColorAttributeName: UIColor.black,
+        NSForegroundColorAttributeName: UIColor.yellow,
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSStrokeWidthAttributeName: 3.00]
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView(initialStatus: true)
+        
+        self.topCaptionTextField.delegate = self
+        self.bottomCaptionTextField.delegate = self
+        
+        viewSetup(initialStatus: true)
+        textFieldTextAttributesSetup()
+        
+        
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //Setup Text Field Text Attributes
+    func textFieldTextAttributesSetup() {
+        topCaptionTextField.defaultTextAttributes = memeTextAttributes
+        topCaptionTextField.textAlignment = .center
+        bottomCaptionTextField.defaultTextAttributes = memeTextAttributes
+        bottomCaptionTextField.textAlignment = .center
     }
     
     //Setup view
-    func setupView(initialStatus: Bool) -> Void {
+    func viewSetup(initialStatus: Bool) -> Void {
         topCaptionTextField.isHidden = initialStatus
         bottomCaptionTextField.isHidden = initialStatus
         helpingInformationLabel.isHidden = !initialStatus
@@ -36,13 +54,13 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     //Tells delegate to clear text field when editing di begin
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.topCaptionTextField.text = ""
+        textField.text = ""
     }
     
     //Tells delegate to dismiss keyboard when return is tapped
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        return false
+        return true
     }
     
     //Tells the delegate that the user picked a still image or movie.
@@ -54,7 +72,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         dismiss(animated: true, completion: nil)
         
-        setupView(initialStatus: false)
+        viewSetup(initialStatus: false)
         
     }
     
@@ -84,7 +102,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         setupImagePickerController(sourceType: .camera)
     }
 
-    
+    //importButton action function
     @IBAction func importButton(_ sender: Any) {
         
         //Create instance of UIAlertController with title and message
@@ -93,22 +111,31 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         importController.message = "Pick your best image to generate meme"
         
         //Setup import from Photo Library Action
-        let importFromPhotoLibrary = UIAlertAction(title: "Import from Photo Library", style: UIAlertActionStyle.default) {
+        let importFromPhotoLibraryAction = UIAlertAction(title: "Import from Photo Library", style: UIAlertActionStyle.default) {
             action in
             self.dismiss(animated: true, completion: nil)
             self.pickAnImageFromMediaLibrary()
         }
         
         //Setup import from camera action
-        let importFromCamera = UIAlertAction(title: "Take a Picture", style: UIAlertActionStyle.default) {
+        let importFromCameraAction = UIAlertAction(title: "Take a Picture", style: UIAlertActionStyle.default) {
             action in
             self.dismiss(animated: true, completion: nil)
             self.pickAnImageFromCamera()
         }
         
+        importFromCameraAction.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        
+        //Setup cancel button
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+            action in
+            self.dismiss(animated: true, completion: nil)
+        }
+        
         //Tells importButton to add actions
-        importController.addAction(importFromPhotoLibrary)
-        importController.addAction(importFromCamera)
+        importController.addAction(importFromPhotoLibraryAction)
+        importController.addAction(importFromCameraAction)
+        importController.addAction(cancelAction)
         
         //Tells importButton to present importController when it is tapped
         self.present(importController, animated: true, completion: nil)
