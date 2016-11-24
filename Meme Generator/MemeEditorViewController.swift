@@ -63,26 +63,30 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func importButton(_ sender: Any) {
         
+        //Create instance of UIAlertController with title and message
         let importController = UIAlertController()
-        importController.title = "Title test alert"
-        importController.message = "Message test alert"
+        importController.title = "Import image"
+        importController.message = "Pick your best image to generate meme"
         
+        //Setup import from Photo Library Action
         let importFromPhotoLibrary = UIAlertAction(title: "Import from Photo Library", style: UIAlertActionStyle.default) {
             action in
             self.dismiss(animated: true, completion: nil)
             self.pickAnImageFromMediaLibrary()
         }
         
+        //Setup import from camera action
         let importFromCamera = UIAlertAction(title: "Take a Picture", style: UIAlertActionStyle.default) {
             action in
             self.dismiss(animated: true, completion: nil)
             self.pickAnImageFromCamera()
         }
         
-        //Tell importButton to add actions
+        //Tells importButton to add actions
         importController.addAction(importFromPhotoLibrary)
         importController.addAction(importFromCamera)
         
+        //Tells importButton to present importController when it is tapped
         self.present(importController, animated: true, completion: nil)
         
     }
