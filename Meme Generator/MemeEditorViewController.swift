@@ -16,6 +16,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var bottomCaptionTextField: UITextField!
     @IBOutlet weak var helpingInformationLabel: UILabel!
     
+    @IBOutlet weak var shareButtonOutlet: UIBarButtonItem!
+    
+    @IBOutlet weak var equalWidthConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var equalHeightConstraint: NSLayoutConstraint!
+    
+
+    
     let memeTextAttributes:[String: Any] = [
         NSStrokeColorAttributeName: UIColor.black,
         NSForegroundColorAttributeName: UIColor.white,
@@ -36,11 +44,32 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         viewSetup(initialStatus: true)
         textFieldTextAttributesSetup()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        func landscapeMode() {
+            view.removeConstraint(equalWidthConstraint)
+            view.addConstraint(equalHeightConstraint)
+        }
+        
+        func potraitMode() {
+            view.removeConstraint(equalHeightConstraint)
+            view.addConstraint(equalWidthConstraint)
+        }
+
+        if UIDevice.current.orientation.isLandscape {
+            landscapeMode()
+            
+        } else if UIDevice.current.orientation.isPortrait {
+            potraitMode()
+        }
     }
     
     //Setup Text Field Text Attributes
@@ -56,6 +85,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         topCaptionTextField.isHidden = initialStatus
         bottomCaptionTextField.isHidden = initialStatus
         helpingInformationLabel.isHidden = !initialStatus
+        shareButtonOutlet.isEnabled = !initialStatus
         
     }
     
@@ -149,11 +179,35 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
     }
     
-    func save() {
-        // Create the meme
-        let meme = Meme(topCaption: topCaptionTextField.text, bottomCaption: bottomCaptionTextField.text, originalImage: imagePickedView.image, memedImage: memedImage)
+    func generateMemedImage() -> UIImage {
+        
+        //Hide Toolbar and Navbar
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        //TODO: Show toolbar and navbar
+        
+        return memedImage
     }
     
+    func save() {
+        // Create the meme
+        let meme = Meme(topCaption: topCaptionTextField.text!, bottomCaption: bottomCaptionTextField.text!, originalImage: imagePickedView.image!, memedImage: generateMemedImage())
+        
+        let image = meme.memedImage
+        let nextController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        self.present(nextController, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func shareButton(_ sender: Any) {
+        save()
+    }
+
     //Keyboard adjustments
     
     //Setup view before keyboard appeared
