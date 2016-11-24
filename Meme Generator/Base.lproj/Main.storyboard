@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -38,31 +37,31 @@
                                             <constraint firstAttribute="width" secondItem="a1d-TK-rKV" secondAttribute="height" multiplier="1:1" id="ug6-rN-J0J"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM CAPTION" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFw-aE-bNY">
-                                        <rect key="frame" x="8" y="430" width="359" height="17"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP CAPTION" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N7H-1W-XQb">
+                                        <rect key="frame" x="18" y="110" width="339" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP CAPTION" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N7H-1W-XQb">
-                                        <rect key="frame" x="8" y="112" width="359" height="17"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM CAPTION" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFw-aE-bNY">
+                                        <rect key="frame" x="18" y="432" width="339" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="N7H-1W-XQb" firstAttribute="leading" secondItem="SqS-kx-z7d" secondAttribute="leadingMargin" id="7EA-T4-1Ot"/>
+                                    <constraint firstItem="bFw-aE-bNY" firstAttribute="trailing" secondItem="a1d-TK-rKV" secondAttribute="trailing" constant="-18" id="BlC-r3-AOw"/>
+                                    <constraint firstItem="N7H-1W-XQb" firstAttribute="trailing" secondItem="a1d-TK-rKV" secondAttribute="trailing" constant="-18" id="C2u-11-cq8"/>
                                     <constraint firstItem="PSX-DX-cc1" firstAttribute="centerX" secondItem="SqS-kx-z7d" secondAttribute="centerX" id="ETV-Gp-zme"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="bFw-aE-bNY" secondAttribute="trailing" id="XeF-Vv-qjb"/>
-                                    <constraint firstItem="a1d-TK-rKV" firstAttribute="top" secondItem="N7H-1W-XQb" secondAttribute="top" constant="-20" id="Xyd-51-3ve"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="N7H-1W-XQb" secondAttribute="trailing" id="aIt-SQ-h5O"/>
+                                    <constraint firstItem="N7H-1W-XQb" firstAttribute="leading" secondItem="a1d-TK-rKV" secondAttribute="leading" constant="18" id="PGL-hr-4Hr"/>
+                                    <constraint firstItem="a1d-TK-rKV" firstAttribute="top" secondItem="N7H-1W-XQb" secondAttribute="top" constant="-18" id="Xyd-51-3ve"/>
                                     <constraint firstItem="PSX-DX-cc1" firstAttribute="centerY" secondItem="SqS-kx-z7d" secondAttribute="centerY" id="cLp-Qt-Ola"/>
-                                    <constraint firstItem="bFw-aE-bNY" firstAttribute="bottom" secondItem="a1d-TK-rKV" secondAttribute="bottom" constant="-20" id="cmT-3h-pAb"/>
+                                    <constraint firstItem="bFw-aE-bNY" firstAttribute="bottom" secondItem="a1d-TK-rKV" secondAttribute="bottom" constant="-18" id="cmT-3h-pAb"/>
                                     <constraint firstItem="a1d-TK-rKV" firstAttribute="centerY" secondItem="SqS-kx-z7d" secondAttribute="centerY" id="fzv-LL-CUx"/>
                                     <constraint firstItem="a1d-TK-rKV" firstAttribute="width" secondItem="SqS-kx-z7d" secondAttribute="width" id="m4K-qv-EH3"/>
-                                    <constraint firstItem="bFw-aE-bNY" firstAttribute="leading" secondItem="SqS-kx-z7d" secondAttribute="leadingMargin" id="v0F-VR-FV3"/>
+                                    <constraint firstItem="bFw-aE-bNY" firstAttribute="leading" secondItem="a1d-TK-rKV" secondAttribute="leading" constant="18" id="mbb-R7-sHL"/>
                                     <constraint firstItem="a1d-TK-rKV" firstAttribute="height" secondItem="SqS-kx-z7d" secondAttribute="height" id="yhZ-IV-5Uf"/>
                                     <constraint firstItem="a1d-TK-rKV" firstAttribute="centerX" secondItem="SqS-kx-z7d" secondAttribute="centerX" id="z44-R5-RGv"/>
                                 </constraints>
@@ -86,7 +85,7 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="SqS-kx-z7d" firstAttribute="leading" secondItem="CeS-hv-PFM" secondAttribute="leading" id="45C-C4-zcc"/>
                             <constraint firstItem="Oby-uw-k6L" firstAttribute="top" secondItem="SqS-kx-z7d" secondAttribute="bottom" id="Hp4-jA-bY5"/>

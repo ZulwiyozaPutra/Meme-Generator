@@ -27,7 +27,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     let memeTextAttributes:[String: Any] = [
         NSStrokeColorAttributeName: UIColor.black,
         NSForegroundColorAttributeName: UIColor.white,
-        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 35)!,
         NSStrokeWidthAttributeName: -4.0]
     
     
@@ -72,6 +72,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var newText = textField.text! as NSString
+        newText = newText.replacingCharacters(in: range, with: string) as NSString
+        return newText.length <= 18
+    }
+    
     //Setup Text Field Text Attributes
     func textFieldTextAttributesSetup() {
         topCaptionTextField.defaultTextAttributes = memeTextAttributes
@@ -96,6 +102,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     //Tells delegate to dismiss keyboard when return is tapped
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if topCaptionTextField.text == "" {
+            topCaptionTextField.text = "TOP CAPTION"
+        }
+        if bottomCaptionTextField.text == "" {
+            bottomCaptionTextField.text = "BOTTOM CAPTION"
+        }
         textField.resignFirstResponder()
         return true
     }
