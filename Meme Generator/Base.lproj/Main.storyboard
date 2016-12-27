@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tIl-td-U4c">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tIl-td-U4c">
+    <device id="retina4_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,32 +20,32 @@
                         <viewControllerLayoutGuide type="bottom" id="qWy-mL-nPb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CeS-hv-PFM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SqS-kx-z7d">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="64" width="667" height="267"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap + to generate a new meme" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSX-DX-cc1">
-                                        <rect key="frame" x="69" y="269" width="237" height="21"/>
+                                        <rect key="frame" x="215" y="123" width="237" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a1d-TK-rKV">
-                                        <rect key="frame" x="0.0" y="92" width="375" height="375"/>
+                                        <rect key="frame" x="0.0" y="-200" width="667" height="667"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="a1d-TK-rKV" secondAttribute="height" multiplier="1:1" id="ug6-rN-J0J"/>
+                                            <constraint firstAttribute="width" secondItem="a1d-TK-rKV" secondAttribute="height" multiplier="1:1" id="GO9-f5-dFD"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP CAPTION" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N7H-1W-XQb">
-                                        <rect key="frame" x="18" y="110" width="339" height="17"/>
+                                        <rect key="frame" x="18" y="-182" width="631" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM CAPTION" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bFw-aE-bNY">
-                                        <rect key="frame" x="18" y="432" width="339" height="17"/>
+                                        <rect key="frame" x="18" y="432" width="631" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -72,7 +73,7 @@
                                 </variation>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oby-uw-k6L">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="331" width="667" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="yXz-i5-m6U"/>
                                 </constraints>
@@ -92,9 +93,15 @@
                             <constraint firstItem="SqS-kx-z7d" firstAttribute="top" secondItem="KFG-cz-bqV" secondAttribute="bottom" id="IXB-o5-0v8"/>
                             <constraint firstAttribute="trailing" secondItem="Oby-uw-k6L" secondAttribute="trailing" id="K0M-nw-GJj"/>
                             <constraint firstAttribute="trailing" secondItem="SqS-kx-z7d" secondAttribute="trailing" id="OZh-B7-opA"/>
+                            <constraint firstItem="a1d-TK-rKV" firstAttribute="top" secondItem="CeS-hv-PFM" secondAttribute="topMargin" constant="156" id="XCE-Sg-tnG"/>
                             <constraint firstItem="Oby-uw-k6L" firstAttribute="leading" secondItem="CeS-hv-PFM" secondAttribute="leading" id="mBB-Hs-hyw"/>
                             <constraint firstItem="Oby-uw-k6L" firstAttribute="bottom" secondItem="qWy-mL-nPb" secondAttribute="top" id="wNV-lB-bpS"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XCE-Sg-tnG"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Meme Generator" id="2cK-BB-KTR" customClass="memec">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nCn-mk-Oah">
@@ -104,6 +111,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="aspectRatio" destination="GO9-f5-dFD" id="fdI-Vp-45J"/>
                         <outlet property="bottomCaptionTextField" destination="bFw-aE-bNY" id="LGL-kc-M70"/>
                         <outlet property="containerView" destination="SqS-kx-z7d" id="11U-HH-fvR"/>
                         <outlet property="equalHeightConstraint" destination="yhZ-IV-5Uf" id="OuQ-VX-hg4"/>
@@ -114,6 +122,8 @@
                         <outlet property="shareButtonOutlet" destination="tHo-nU-1ZV" id="4OO-i5-XuS"/>
                         <outlet property="toolbar" destination="Oby-uw-k6L" id="vuJ-Xt-zc6"/>
                         <outlet property="topCaptionTextField" destination="N7H-1W-XQb" id="PwY-ES-ORD"/>
+                        <outlet property="topMarginConstraint" destination="XCE-Sg-tnG" id="fde-Oq-6TG"/>
+                        <outlet property="verticallyCenteredConstraint" destination="fzv-LL-CUx" id="wCj-LJ-fpK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0A-hH-gej" userLabel="First Responder" sceneMemberID="firstResponder"/>

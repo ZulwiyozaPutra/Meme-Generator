@@ -26,9 +26,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     //Constraints for Image View
     @IBOutlet weak var equalWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var equalHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var verticallyCenteredConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topMarginConstraint: NSLayoutConstraint!
+    @IBOutlet weak var aspectRatio: NSLayoutConstraint!
     
-
     //Attributes for Meme Words
+    
     let memeTextAttributesPotrait:[String: Any] = [
         NSStrokeColorAttributeName: UIColor.black,
         NSForegroundColorAttributeName: UIColor.white,
@@ -70,12 +73,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         func landscapeMode() {
             view.removeConstraint(equalWidthConstraint)
             view.addConstraint(equalHeightConstraint)
+            view.addConstraint(aspectRatio)
             textFieldTextAttributesLandscapeSetup()
         }
         
         func potraitMode() {
             view.removeConstraint(equalHeightConstraint)
             view.addConstraint(equalWidthConstraint)
+            view.addConstraint(aspectRatio)
             textFieldTextAttributesPotraitSetup()
         }
 
@@ -194,12 +199,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         containerView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.0)
         
         // Render view to an image
-        UIGraphicsBeginImageContext(self.imagePickedView.frame.size)
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 10.0)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-//        imagePickedView.contentMode = .scaleAspectFit
-//        let memeFrame = CGRect(x: imagePickedView.frame.origin.x, y: imagePickedView.frame.origin.y, width: imagePickedView.bounds.size.width, height: imagePickedView.bounds.size.height)
-//        UIGraphicsBeginImageContextWithOptions(imagePickedView.frame.size, false, 10.0)
-//        view.drawHierarchy(in: memeFrame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         //TODO: Show toolbar and navbar
