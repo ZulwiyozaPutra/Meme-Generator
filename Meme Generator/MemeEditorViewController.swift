@@ -73,14 +73,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         func landscapeMode() {
             view.removeConstraint(equalWidthConstraint)
             view.addConstraint(equalHeightConstraint)
-            view.addConstraint(aspectRatio)
+            view.removeConstraint(verticallyCenteredConstraint)
             textFieldTextAttributesLandscapeSetup()
         }
         
         func potraitMode() {
             view.removeConstraint(equalHeightConstraint)
             view.addConstraint(equalWidthConstraint)
-            view.addConstraint(aspectRatio)
+            view.addConstraint(verticallyCenteredConstraint)
             textFieldTextAttributesPotraitSetup()
         }
 
@@ -200,7 +200,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
-        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 10.0)
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 3.0)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
