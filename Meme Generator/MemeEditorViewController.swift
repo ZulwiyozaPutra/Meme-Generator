@@ -14,6 +14,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     //VARIABLES//
     
+    var updatedY = CGFloat()
+    
     @IBOutlet weak var imagePickedView: UIImageView!
     @IBOutlet weak var topCaptionTextField: UITextField!
     @IBOutlet weak var bottomCaptionTextField: UITextField!
@@ -50,6 +52,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     //Overriding Functions
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        updatedY = view.frame.origin.y - self.imagePickedView.frame.origin.y
+        
         subscribeToKeyboardNotifications()
     }
     
@@ -197,11 +202,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         toolbar.isHidden = true
         mainView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.0)
         containerView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.0)
+        UIApplication.shared.isStatusBarHidden = true
         
         // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 3.0)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        
+        UIGraphicsBeginImageContextWithOptions(self.imagePickedView.frame.size, false, 3.0)
+        view.drawHierarchy(in: self.imagePickedView.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         //TODO: Show toolbar and navbar
@@ -209,6 +215,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         toolbar.isHidden = false
         mainView.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
         containerView.backgroundColor = UIColor.lightGray.withAlphaComponent(1.0)
+        UIApplication.shared.isStatusBarHidden = false
         
         return memedImage
     }
