@@ -9,9 +9,26 @@
 import Foundation
 import UIKit
 
-class SavedMemeCollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SavedMemeCollectionViewController: UICollectionViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     memes = appDelegate.memes
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath)
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        <#code#>
+    }
+    
+    
+    
+    
 
 }
