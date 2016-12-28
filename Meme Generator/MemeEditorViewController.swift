@@ -66,6 +66,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         viewSetup(initialStatus: true)
         textFieldTextAttributesPotraitSetup()
+        equalHeightConstraint.isActive = false
+        equalWidthConstraint.isActive = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -76,24 +78,34 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         
         func landscapeMode() {
-            view.removeConstraint(equalWidthConstraint)
-            view.addConstraint(equalHeightConstraint)
-            view.removeConstraint(verticallyCenteredConstraint)
             textFieldTextAttributesLandscapeSetup()
+//            view.addConstraint(equalHeightConstraint)
+//            view.removeConstraint(equalWidthConstraint)
+            
+            equalHeightConstraint.isActive = true
+            equalWidthConstraint.isActive = false
+
+            
+            
         }
         
         func potraitMode() {
-            view.removeConstraint(equalHeightConstraint)
-            view.addConstraint(equalWidthConstraint)
-            view.addConstraint(verticallyCenteredConstraint)
             textFieldTextAttributesPotraitSetup()
+//            view.addConstraint(equalWidthConstraint)
+//            view.removeConstraint(equalHeightConstraint)
+            
+            equalWidthConstraint.isActive = true
+            equalHeightConstraint.isActive = false
+            
         }
 
-        if UIDevice.current.orientation.isLandscape {
+        if UIDevice.current.orientation.isLandscape == true {
             landscapeMode()
+            print("landscape!")
             
-        } else if UIDevice.current.orientation.isPortrait {
+        } else {
             potraitMode()
+            print("potrait!")
         }
     }
     
@@ -222,7 +234,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func save(memedImage: UIImage) {
         // Create the meme
-        _ = Meme(topCaption: topCaptionTextField.text!, bottomCaption: bottomCaptionTextField.text!, originalImage: imagePickedView.image!, memedImage: memedImage)
+        let meme = Meme(topCaption: topCaptionTextField.text!, bottomCaption: bottomCaptionTextField.text!, originalImage: imagePickedView.image!, memedImage: memedImage)
+        
+        //Appending meme to the array of meme
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        AppDelegate.memes.append(meme)
         
     }
 
