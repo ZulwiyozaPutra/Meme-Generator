@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SavedMemeCollectionViewController: UIViewController {
+class SavedMemeCollectionViewController: UICollectionViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     memes = appDelegate.memes

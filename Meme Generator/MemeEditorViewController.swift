@@ -239,7 +239,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         //Appending meme to the array of meme
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
-        AppDelegate.memes.append(meme)
+        appDelegate.memes.append(meme)
         
     }
 

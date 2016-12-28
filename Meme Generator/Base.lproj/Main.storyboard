@@ -144,10 +144,10 @@
             </objects>
             <point key="canvasLocation" x="4188" y="408"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Saved Meme Table View Controller-->
         <scene sceneID="Ivz-ek-AgW">
             <objects>
-                <tableViewController id="7Cr-aw-rhE" sceneMemberID="viewController">
+                <tableViewController id="7Cr-aw-rhE" customClass="SavedMemeTableViewController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="O6F-eI-c8L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -210,10 +210,10 @@
             </objects>
             <point key="canvasLocation" x="5401" y="75"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Saved Meme Collection View Controller-->
         <scene sceneID="ELP-6h-Q7b">
             <objects>
-                <collectionViewController id="beY-eI-6D4" sceneMemberID="viewController">
+                <collectionViewController id="beY-eI-6D4" customClass="SavedMemeCollectionViewController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="MRV-er-8mR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

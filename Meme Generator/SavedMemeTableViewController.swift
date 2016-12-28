@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-class SavedMemeTableViewController: UIViewController {
-    
+class SavedMemeTableViewController: UITableViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     memes = appDelegate.memes
