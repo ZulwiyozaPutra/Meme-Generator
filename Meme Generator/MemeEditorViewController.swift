@@ -77,34 +77,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         
-        func landscapeMode() {
-            textFieldTextAttributesLandscapeSetup()
-                        view.addConstraint(equalHeightConstraint)
-                        view.removeConstraint(equalWidthConstraint)
-            
-//            equalHeightConstraint.isActive = true
-//            equalWidthConstraint.isActive = false
-            
-            
-            
-        }
+        adjustViewLayout()
+        self.view.layoutIfNeeded()
         
-        func potraitMode() {
-            textFieldTextAttributesPotraitSetup()
-                        view.addConstraint(equalWidthConstraint)
-                        view.removeConstraint(equalHeightConstraint)
-            
-//            equalWidthConstraint.isActive = true
-//            equalHeightConstraint.isActive = false
-            
-        }
-        
-        switch UIDevice.current.orientation {
-        case .portrait:
-            potraitMode()
-        default:
-            landscapeMode()
-        }
     }
     
 //    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -123,7 +98,36 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 //    
     
     
+    
+    
     //FUNCTIONS//
+    
+    //Adjust view layout
+    
+    func landscapeMode() {
+        textFieldTextAttributesLandscapeSetup()
+        
+        view.removeConstraint(equalWidthConstraint)
+        view.addConstraint(equalHeightConstraint)
+    }
+    
+    func potraitMode() {
+        textFieldTextAttributesPotraitSetup()
+        
+        view.removeConstraint(equalHeightConstraint)
+        view.addConstraint(equalWidthConstraint)
+    }
+    
+    func adjustViewLayout() {
+
+        switch UIDevice.current.orientation {
+        case .portrait:
+            potraitMode()
+        default:
+            landscapeMode()
+        }
+
+    }
     
     //Tells delegate to limit textfield for 23 max chars
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
