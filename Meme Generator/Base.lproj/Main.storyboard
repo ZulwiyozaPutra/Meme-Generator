@@ -100,6 +100,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Meme Generator" id="2cK-BB-KTR" customClass="memec">
+                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="jel-Wm-Fwm">
+                            <connections>
+                                <action selector="saveButton:" destination="1Ah-VM-2x9" id="JSA-rG-7Df"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nCn-mk-Oah">
                             <connections>
                                 <action selector="importButton:" destination="1Ah-VM-2x9" id="by9-nu-BGk"/>
@@ -147,18 +152,34 @@
         <!--Saved Meme Table View Controller-->
         <scene sceneID="Ivz-ek-AgW">
             <objects>
-                <tableViewController id="7Cr-aw-rhE" customClass="SavedMemeTableViewController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SavedMemeTableViewController" id="7Cr-aw-rhE" customClass="SavedMemeTableViewController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="O6F-eI-c8L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Tlr-7E-6FG">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Snf-De-kB7" detailTextLabel="RAg-KN-ebe" style="IBUITableViewCellStyleSubtitle" id="Tlr-7E-6FG" customClass="SavedMemeTable">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tlr-7E-6FG" id="cLy-TS-LpT">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Snf-De-kB7">
+                                            <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RAg-KN-ebe">
+                                            <rect key="frame" x="15" y="25" width="33" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
