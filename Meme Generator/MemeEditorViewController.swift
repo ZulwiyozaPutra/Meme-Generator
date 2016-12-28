@@ -104,6 +104,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     //Adjust view layout
     
+    //For landscape mode
     func landscapeMode() {
         textFieldTextAttributesLandscapeSetup()
         
@@ -111,6 +112,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         view.addConstraint(equalHeightConstraint)
     }
     
+    //For potraitmode
     func potraitMode() {
         textFieldTextAttributesPotraitSetup()
         
@@ -118,8 +120,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         view.addConstraint(equalWidthConstraint)
     }
     
+    //Adjusting function
     func adjustViewLayout() {
-
         switch UIDevice.current.orientation {
         case .portrait:
             potraitMode()
@@ -219,7 +221,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     //Picking an image action from Camera
     func pickAnImageFromCamera() {
-        
         setupImagePickerController(sourceType: .camera)
     }
     
@@ -234,8 +235,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         // Render view to an image
         
-        UIGraphicsBeginImageContextWithOptions(self.imagePickedView.frame.size, false, 3.0)
-        view.drawHierarchy(in: self.imagePickedView.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 3.0)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         //TODO: Show toolbar and navbar
@@ -354,6 +355,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationController = segue.destination as! UITabBarController
-        destinationController
+        destinationController.
+
     }
 }

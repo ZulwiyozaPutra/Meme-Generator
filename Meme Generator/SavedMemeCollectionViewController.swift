@@ -15,18 +15,31 @@ class SavedMemeCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
-    func setupFlowLayout() -> Void {
+    func setupFlowLayout(orientation: UIDeviceOrientation) -> Void {
+        let space: CGFloat = 3.0
+        let dimension: CGFloat
         
-        
-        
-        let space:CGFloat = 3.0
-        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+        if orientation == UIDeviceOrientation.portrait {
+            dimension = (view.frame.size.width - (2 * space)) / 3.0
+        } else {
+            dimension = (view.frame.size.height - (2 * space)) / 3.0
+        }
         
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
-        
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        switch <#value#> {
+        case <#pattern#>:
+            <#code#>
+        default:
+            <#code#>
+        }
+    }
+    
+    
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
