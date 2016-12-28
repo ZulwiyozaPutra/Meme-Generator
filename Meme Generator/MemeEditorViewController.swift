@@ -75,40 +75,52 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         unsubscribeFromKeyboardNotifications()
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         
         func landscapeMode() {
             textFieldTextAttributesLandscapeSetup()
-//            view.addConstraint(equalHeightConstraint)
-//            view.removeConstraint(equalWidthConstraint)
+                        view.addConstraint(equalHeightConstraint)
+                        view.removeConstraint(equalWidthConstraint)
             
-            equalHeightConstraint.isActive = true
-            equalWidthConstraint.isActive = false
-
+//            equalHeightConstraint.isActive = true
+//            equalWidthConstraint.isActive = false
+            
             
             
         }
         
         func potraitMode() {
             textFieldTextAttributesPotraitSetup()
-//            view.addConstraint(equalWidthConstraint)
-//            view.removeConstraint(equalHeightConstraint)
+                        view.addConstraint(equalWidthConstraint)
+                        view.removeConstraint(equalHeightConstraint)
             
-            equalWidthConstraint.isActive = true
-            equalHeightConstraint.isActive = false
+//            equalWidthConstraint.isActive = true
+//            equalHeightConstraint.isActive = false
             
         }
-
-        if UIDevice.current.orientation.isLandscape == true {
-            landscapeMode()
-            print("landscape!")
-            
-        } else {
+        
+        switch UIDevice.current.orientation {
+        case .portrait:
             potraitMode()
-            print("potrait!")
+        default:
+            landscapeMode()
         }
     }
     
+//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//        
+//        
+//
+//        if UIDevice.current.orientation.isLandscape == true {
+//            landscapeMode()
+//            print("landscape!")
+//            
+//        } else {
+//            potraitMode()
+//            print("potrait!")
+//        }
+//    }
+//    
     
     
     //FUNCTIONS//
@@ -243,16 +255,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
     }
     
-    @IBAction func saveButton(_ sender: Any) {
-        
-        let savedMemeViewController = self.storyboard!.instantiateViewController(withIdentifier: "SavedMemeTableViewController") as! SavedMemeTableViewController
-        SavedMemeTableViewController.
-        
-    }
-    
-
-    
-    
     //ACTIONS//
     
     //importButton action function
@@ -344,5 +346,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationController = segue.destination as! UITabBarController
+        destinationController
     }
 }

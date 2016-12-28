@@ -9,27 +9,32 @@
 import Foundation
 import UIKit
 
-class SavedMemeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SavedMemeTableViewController: UITableViewController {
     
     
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var memes : [Meme]! {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.memes
+    }
     
-    memes = appDelegate.memes
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TODO: FILL THIS")
         return cell!
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+        
+        
+    }
     
 }

@@ -11,8 +11,23 @@ import UIKit
 
 class SavedMemeCollectionViewController: UICollectionViewController {
     
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    memes = appDelegate.memes
+    var memes : [Meme]!
+    
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
+    func setupFlowLayout() -> Void {
+        
+        
+        
+        let space:CGFloat = 3.0
+        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+        
+    }
+    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
@@ -24,7 +39,20 @@ class SavedMemeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        memes = appDelegate.memes
+        collectionView?.reloadData()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupFlowLayout()
     }
     
     
