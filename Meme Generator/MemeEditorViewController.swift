@@ -56,6 +56,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         updatedY = view.frame.origin.y - self.imagePickedView.frame.origin.y
         
         subscribeToKeyboardNotifications()
+        subscribeToOrientationNotification()
     }
     
     override func viewDidLoad() {
@@ -75,12 +76,24 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         unsubscribeFromKeyboardNotifications()
     }
     
-    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+    func subscribeToOrientationNotification() -> Void {
+        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    func deviceDidRotate(_ notification: NSNotification) -> Void {
         
-        adjustViewLayout()
-        self.view.layoutIfNeeded()
+        switch UIDevice.current.orientation {
+        case .portrait:
+            potraitMode()
+        default:
+            landscapeMode()
+        }
         
     }
+
+    
+    
     
 //    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 //        
@@ -354,8 +367,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationController = segue.destination as! UITabBarController
-        destinationController.
+        _ = segue.destination as! UITabBarController
 
     }
 }

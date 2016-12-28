@@ -30,16 +30,7 @@ class SavedMemeCollectionViewController: UICollectionViewController {
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        switch <#value#> {
-        case <#pattern#>:
-            <#code#>
-        default:
-            <#code#>
-        }
-    }
-    
-    
+
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -61,11 +52,33 @@ class SavedMemeCollectionViewController: UICollectionViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appDelegate.memes
         collectionView?.reloadData()
+        
+        subscribeToOrientationNotification()
+        
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupFlowLayout()
+        setupFlowLayout(orientation: UIDevice.current.orientation)
+    }
+    
+    func subscribeToOrientationNotification() -> Void {
+        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    func deviceDidRotate(_ notification: NSNotification) -> Void {
+        
+        switch UIDevice.current.orientation {
+        case .portrait:
+            setupFlowLayout(orientation: .portrait)
+        case .landscapeLeft:
+            setupFlowLayout(orientation: .landscapeLeft)
+        default:
+            setupFlowLayout(orientation: .landscapeRight)
+        }
+        
     }
     
     
