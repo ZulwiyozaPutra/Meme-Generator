@@ -284,6 +284,38 @@
             </objects>
             <point key="canvasLocation" x="6341.6000000000004" y="787.55622188905556"/>
         </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="qWw-0D-l4M">
+            <objects>
+                <viewController storyboardIdentifier="MemeDetailViewController" id="Emk-uc-OCd" customClass="MemeDetailViewController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MzA-PL-YfF"/>
+                        <viewControllerLayoutGuide type="bottom" id="dWj-mE-I2c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cfv-z6-LFa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HXd-IV-ZuH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="HXd-IV-ZuH" secondAttribute="trailing" id="iXr-gQ-PS9"/>
+                            <constraint firstItem="HXd-IV-ZuH" firstAttribute="top" secondItem="cfv-z6-LFa" secondAttribute="top" id="lOq-qs-vaB"/>
+                            <constraint firstAttribute="bottom" secondItem="HXd-IV-ZuH" secondAttribute="bottom" id="nOG-PN-2Fu"/>
+                            <constraint firstItem="HXd-IV-ZuH" firstAttribute="leading" secondItem="cfv-z6-LFa" secondAttribute="leading" id="qTo-Av-mFb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="memeDetailImageView" destination="HXd-IV-ZuH" id="3W9-Pa-ezd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dic-es-2SM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7318" y="428"/>
+        </scene>
         <!--Item-->
         <scene sceneID="fJq-Ck-j3i">
             <objects>

@@ -46,6 +46,10 @@ class SavedMemeCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        //passing data when a cell in collection view tapped
+        let memeDetailViewController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        memeDetailViewController.meme = memes[indexPath.row]
+        navigationController!.pushViewController(memeDetailViewController, animated: true)
         
     }
     
@@ -83,9 +87,5 @@ class SavedMemeCollectionViewController: UICollectionViewController {
         }
         
     }
-    
-    
-    
-    
 
 }

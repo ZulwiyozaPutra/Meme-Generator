@@ -26,6 +26,10 @@ class SavedMemeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let detailMemeViewController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        detailMemeViewController.meme = memes[indexPath.row]
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
