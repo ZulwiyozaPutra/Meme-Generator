@@ -204,7 +204,7 @@
                     <navigationItem key="navigationItem" id="N9w-wT-qb0">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sBo-wA-Wbx">
                             <connections>
-                                <segue destination="tIl-td-U4c" kind="show" id="SDT-dB-gXL"/>
+                                <action selector="addMeme:" destination="7Cr-aw-rhE" id="dKB-0w-1mI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -216,7 +216,8 @@
         <!--Navigation Controller-->
         <scene sceneID="c68-6a-xRb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tIl-td-U4c" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCM-rJ-ESV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="MemeEditorRootViewController" automaticallyAdjustsScrollViewInsets="NO" id="tIl-td-U4c" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qy7-Hj-8PH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -227,7 +228,6 @@
                         <segue destination="1Ah-VM-2x9" kind="relationship" relationship="rootViewController" id="ge1-gJ-wq7"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCM-rJ-ESV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7574" y="394"/>
         </scene>
@@ -297,7 +297,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ciY-EN-Oz2">
                             <connections>
                                 <action selector="addMemeButton:" destination="beY-eI-6D4" id="RKv-Re-w5q"/>
-                                <segue destination="tIl-td-U4c" kind="show" id="565-Kx-LgA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -387,7 +386,4 @@
         <image name="Collection" width="25" height="25"/>
         <image name="Table View" width="25" height="25"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="565-Kx-LgA"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -23,6 +23,11 @@ class SavedMemeTableViewController: UITableViewController {
         return label
     }
     
+    @IBAction func addMeme(_ sender: Any) {
+        let memeEditor = storyboard!.instantiateViewController(withIdentifier: "MemeEditorRootViewController") as! UINavigationController
+        self.present(memeEditor, animated: true, completion: nil)
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         var numOfSections: Int = 0
         
