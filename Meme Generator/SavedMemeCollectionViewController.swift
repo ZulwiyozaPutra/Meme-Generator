@@ -13,6 +13,26 @@ class SavedMemeCollectionViewController: UICollectionViewController {
     
     var memes : [Meme]!
     
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        var numOfSections: Int = 0
+        if memes != nil {
+            
+            numOfSections = 1
+            collectionView.backgroundView = nil
+            
+        } else {
+            
+            let frame = CGRect(x: 0, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height)
+            let label = UILabel(frame: frame)
+            label.text             = "Tap + to create a new meme"
+            label.textColor        = UIColor.black
+            label.textAlignment    = .center
+            collectionView.backgroundView = label
+
+        }
+        return numOfSections
+    }
+    
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     func setupFlowLayout(orientation: UIDeviceOrientation) -> Void {

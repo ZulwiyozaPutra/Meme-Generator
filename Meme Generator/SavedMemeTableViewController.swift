@@ -12,6 +12,30 @@ import UIKit
 class SavedMemeTableViewController: UITableViewController {
     
     var memes: [Meme]!
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        var numOfSections: Int = 0
+        if memes == nil {
+            
+            tableView.separatorStyle = .singleLine
+            numOfSections = 1
+//            tableView.backgroundView = nil
+
+        } else if memes.count == 0 {
+            
+            let frame = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height)
+            let label = UILabel(frame: frame)
+            label.text             = "Tap + to create a new meme"
+            label.textColor        = UIColor.black
+            label.textAlignment    = .center
+            tableView.backgroundView = label
+            tableView.separatorStyle = .none
+
+        } else {
+            numOfSections = 1
+        }
+        return numOfSections
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
