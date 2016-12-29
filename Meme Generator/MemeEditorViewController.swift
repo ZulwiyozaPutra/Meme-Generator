@@ -24,6 +24,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet weak var saveButtonOutlet: UIBarButtonItem!
+    @IBOutlet weak var libraryButtonOutlet: UIBarButtonItem!
     
     //Constraints for Image View
     @IBOutlet weak var equalWidthConstraint: NSLayoutConstraint!
@@ -53,6 +55,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
         updatedY = view.frame.origin.y - self.imagePickedView.frame.origin.y
         
         subscribeToKeyboardNotifications()
@@ -66,19 +69,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         bottomCaptionTextField.delegate = self
         
         viewSetup(initialStatus: true)
+        libraryButtonOutlet.isEnabled = false
         textFieldTextAttributesPotraitSetup()
-        equalHeightConstraint.isActive = false
-        equalWidthConstraint.isActive = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
-    }
-    
-    func subscribeToOrientationNotification() -> Void {
-        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
-        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        unsubscribeToOrientationNotification()
     }
     
     func deviceDidRotate(_ notification: NSNotification) -> Void {
@@ -136,6 +134,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func adjustViewLayout() {
         switch UIDevice.current.orientation {
         case .portrait:
+            potraitMode()
+        case .portraitUpsideDown:
             potraitMode()
         default:
             landscapeMode()
@@ -210,7 +210,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         bottomCaptionTextField.isHidden = initialStatus
         helpingInformationLabel.isHidden = !initialStatus
         shareButtonOutlet.isEnabled = !initialStatus
-        
+        saveButtonOutlet.isEnabled = !initialStatus
     }
     
     //Setup UIImagePickerController
@@ -269,6 +269,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
+        
+        libraryButtonOutlet.isEnabled = true
     }
     
     //ACTIONS//
@@ -363,6 +365,19 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
+    
+    //Subscribing to notification
+    func subscribeToOrientationNotification() -> Void {
+        UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+        NotificationCenter.default.addObserver(self, selector: #selector(deviceDidRotate(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    //Unsubscribing to notificaton
+    func unsubscribeToOrientationNotification() -> Void {
+        UIDevice.current.endGeneratingDeviceOrientationNotifications()
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let image = generateMemedImage()

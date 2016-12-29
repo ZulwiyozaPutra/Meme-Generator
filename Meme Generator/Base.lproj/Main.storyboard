@@ -14,7 +14,7 @@
         <!--Meme Generator-->
         <scene sceneID="UKQ-ji-EHP">
             <objects>
-                <viewController id="1Ah-VM-2x9" customClass="MemeEditorViewController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditorViewController" id="1Ah-VM-2x9" customClass="MemeEditorViewController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KFG-cz-bqV"/>
                         <viewControllerLayoutGuide type="bottom" id="qWy-mL-nPb"/>
@@ -84,6 +84,12 @@
                                             <action selector="shareButton:" destination="1Ah-VM-2x9" id="Rgn-Q8-Maq"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="UZ6-e1-Np3"/>
+                                    <barButtonItem systemItem="organize" id="o63-pJ-HtA">
+                                        <connections>
+                                            <segue destination="3Vo-TY-Ssz" kind="presentation" id="YYm-y6-P03"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -125,7 +131,9 @@
                         <outlet property="equalWidthConstraint" destination="m4K-qv-EH3" id="DIL-QN-h3p"/>
                         <outlet property="helpingInformationLabel" destination="PSX-DX-cc1" id="8DQ-8Q-CWa"/>
                         <outlet property="imagePickedView" destination="a1d-TK-rKV" id="7Sf-Wa-G7N"/>
+                        <outlet property="libraryButtonOutlet" destination="o63-pJ-HtA" id="Y5b-Dl-2Ei"/>
                         <outlet property="mainView" destination="CeS-hv-PFM" id="Jih-Fc-nEA"/>
+                        <outlet property="saveButtonOutlet" destination="jel-Wm-Fwm" id="9zw-Qq-JJe"/>
                         <outlet property="shareButtonOutlet" destination="tHo-nU-1ZV" id="4OO-i5-XuS"/>
                         <outlet property="toolbar" destination="Oby-uw-k6L" id="vuJ-Xt-zc6"/>
                         <outlet property="topCaptionTextField" destination="N7H-1W-XQb" id="PwY-ES-ORD"/>
@@ -194,7 +202,13 @@
                             <outlet property="delegate" destination="7Cr-aw-rhE" id="cWj-Or-sYY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="N9w-wT-qb0"/>
+                    <navigationItem key="navigationItem" id="N9w-wT-qb0">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="sBo-wA-Wbx">
+                            <connections>
+                                <segue destination="tIl-td-U4c" kind="show" id="P4d-v5-C3d"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yly-il-rGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -218,11 +232,11 @@
             </objects>
             <point key="canvasLocation" x="5401" y="-754"/>
         </scene>
-        <!--Item-->
+        <!--Table View-->
         <scene sceneID="Wa2-Qa-a1o">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Mh-Qp-NOe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="6FV-u5-AcQ"/>
+                    <tabBarItem key="tabBarItem" title="Table View" image="Table View" selectedImage="Table View" id="6FV-u5-AcQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qga-Ie-8KO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -275,7 +289,14 @@
                             <outlet property="delegate" destination="beY-eI-6D4" id="NqX-rH-40x"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="e7h-1T-k8t"/>
+                    <navigationItem key="navigationItem" id="e7h-1T-k8t">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ciY-EN-Oz2">
+                            <connections>
+                                <action selector="addMemeButton:" destination="beY-eI-6D4" id="RKv-Re-w5q"/>
+                                <segue destination="tIl-td-U4c" kind="show" id="WtI-Pq-yrB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="flowLayout" destination="rnh-jQ-xZn" id="2KT-W0-kaa"/>
                     </connections>
@@ -316,11 +337,11 @@
             </objects>
             <point key="canvasLocation" x="7318" y="428"/>
         </scene>
-        <!--Item-->
+        <!--Collection View-->
         <scene sceneID="fJq-Ck-j3i">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UP2-Nv-e8u" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Qro-zN-FMF"/>
+                    <tabBarItem key="tabBarItem" title="Collection View" image="Collection" selectedImage="Collection" id="Qro-zN-FMF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gve-z7-WaN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -336,4 +357,12 @@
             <point key="canvasLocation" x="5401" y="788"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Collection" width="25" height="25"/>
+        <image name="Table View" width="25" height="25"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="YYm-y6-P03"/>
+        <segue reference="WtI-Pq-yrB"/>
+    </inferredMetricsTieBreakers>
 </document>

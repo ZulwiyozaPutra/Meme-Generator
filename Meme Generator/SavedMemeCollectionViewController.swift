@@ -80,6 +80,8 @@ class SavedMemeCollectionViewController: UICollectionViewController {
         switch UIDevice.current.orientation {
         case .portrait:
             setupFlowLayout(orientation: .portrait)
+        case .portraitUpsideDown:
+            setupFlowLayout(orientation: .portraitUpsideDown)
         case .landscapeLeft:
             setupFlowLayout(orientation: .landscapeLeft)
         default:
