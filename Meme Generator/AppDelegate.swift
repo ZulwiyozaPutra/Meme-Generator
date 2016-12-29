@@ -12,6 +12,7 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    //Create a shared variable of memes
     var memes = [Meme]()
 
     var window: UIWindow?

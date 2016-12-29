@@ -34,7 +34,7 @@ class SavedMemeCollectionViewController: UICollectionViewController {
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return memes.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -51,9 +51,12 @@ class SavedMemeCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appDelegate.memes
         collectionView?.reloadData()
+        
+        print("\(memes.count) is the amount of meme")
         
         subscribeToOrientationNotification()
     }

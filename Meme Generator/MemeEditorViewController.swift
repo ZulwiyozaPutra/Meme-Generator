@@ -89,7 +89,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         default:
             landscapeMode()
         }
-        
     }
 
     
@@ -270,7 +269,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
-        
     }
     
     //ACTIONS//
@@ -369,6 +367,5 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let image = generateMemedImage()
         save(memedImage: image)
-
     }
 }
