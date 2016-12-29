@@ -29,6 +29,7 @@ class SavedMemeTableViewController: UITableViewController {
         
         let detailMemeViewController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailMemeViewController.meme = memes[indexPath.row]
+        navigationController?.pushViewController(detailMemeViewController, animated: true)
         
     }
     
