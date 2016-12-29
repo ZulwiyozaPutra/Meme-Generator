@@ -367,7 +367,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        _ = segue.destination as! UITabBarController
+        let image = generateMemedImage()
+        save(memedImage: image)
 
     }
 }

@@ -108,7 +108,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="save" id="jel-Wm-Fwm">
                             <connections>
                                 <action selector="saveButton:" destination="1Ah-VM-2x9" id="JSA-rG-7Df"/>
-                                <segue destination="7Cr-aw-rhE" kind="presentation" id="i2d-n0-Sob"/>
+                                <segue destination="3Vo-TY-Ssz" kind="presentation" id="8Md-2o-21U"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nCn-mk-Oah">
@@ -164,7 +164,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeCell" textLabel="Snf-De-kB7" detailTextLabel="RAg-KN-ebe" style="IBUITableViewCellStyleSubtitle" id="Tlr-7E-6FG" customClass="SavedMemeTable">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeTableViewCell" textLabel="Snf-De-kB7" detailTextLabel="RAg-KN-ebe" style="IBUITableViewCellStyleSubtitle" id="Tlr-7E-6FG" customClass="SavedMemeTable">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tlr-7E-6FG" id="cLy-TS-LpT">
@@ -252,7 +252,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCell" id="3Wf-NB-qRC" customClass="SavedMeme">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCollectionViewCell" id="3Wf-NB-qRC" customClass="MemeCollectionViewCell" customModule="Meme_Generator" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -265,6 +265,9 @@
                                         </imageView>
                                     </subviews>
                                 </view>
+                                <connections>
+                                    <outlet property="memeImageView" destination="7dz-QA-hlH" id="8XX-0J-abt"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -301,7 +304,4 @@
             <point key="canvasLocation" x="5401" y="788"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="i2d-n0-Sob"/>
-    </inferredMetricsTieBreakers>
 </document>

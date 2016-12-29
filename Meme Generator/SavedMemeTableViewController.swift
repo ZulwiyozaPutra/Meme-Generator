@@ -11,30 +11,28 @@ import UIKit
 
 class SavedMemeTableViewController: UITableViewController {
     
-    
-    
-    var memes : [Meme]! {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.memes
-    }
-    
+    var memes: [Meme]!
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return memes.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TODO: FILL THIS")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")
+        let meme = memes[indexPath.row]
+        cell?.textLabel?.text = meme.topCaption
+        cell?.imageView?.image = meme.originalImage
         return cell!
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        memes = appDelegate.memes
         tableView.reloadData()
-        
-        
     }
     
 }

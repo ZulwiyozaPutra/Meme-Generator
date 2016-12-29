@@ -38,7 +38,9 @@ class SavedMemeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
+        let meme = memes[indexPath.row]
+        cell.memeImageView.image = meme.memedImage
         return cell
     }
     
@@ -54,8 +56,6 @@ class SavedMemeCollectionViewController: UICollectionViewController {
         collectionView?.reloadData()
         
         subscribeToOrientationNotification()
-        
-        
     }
     
     override func viewDidLoad() {
