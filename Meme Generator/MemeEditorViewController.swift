@@ -88,27 +88,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             landscapeMode()
         }
     }
-
-    
-    
-    
-//    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//        
-//        
-//
-//        if UIDevice.current.orientation.isLandscape == true {
-//            landscapeMode()
-//            print("landscape!")
-//            
-//        } else {
-//            potraitMode()
-//            print("potrait!")
-//        }
-//    }
-//    
-    
-    
-    
     
     //FUNCTIONS//
     
@@ -286,14 +265,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         //Setup import from Photo Library Action
         let importFromPhotoLibraryAction = UIAlertAction(title: "Import from Photo Library", style: UIAlertActionStyle.default) {
             action in
-            self.dismiss(animated: true, completion: nil)
+            importController.dismiss(animated: true, completion: nil)
             self.pickAnImageFromMediaLibrary()
         }
         
         //Setup import from camera action
         let importFromCameraAction = UIAlertAction(title: "Take a Picture", style: UIAlertActionStyle.default) {
             action in
-            self.dismiss(animated: true, completion: nil)
+            importController.dismiss(animated: true, completion: nil)
             self.pickAnImageFromCamera()
         }
         
@@ -302,7 +281,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         //Setup cancel button
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
             action in
-            self.dismiss(animated: true, completion: nil)
+            importController.dismiss(animated: true, completion: nil)
         }
         
         //Tells importButton to add actions

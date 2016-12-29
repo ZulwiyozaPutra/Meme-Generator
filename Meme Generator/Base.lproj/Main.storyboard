@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tIl-td-U4c">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3Vo-TY-Ssz">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -85,11 +85,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="UZ6-e1-Np3"/>
-                                    <barButtonItem systemItem="organize" id="o63-pJ-HtA">
-                                        <connections>
-                                            <segue destination="3Vo-TY-Ssz" kind="presentation" id="YYm-y6-P03"/>
-                                        </connections>
-                                    </barButtonItem>
+                                    <barButtonItem systemItem="organize" id="o63-pJ-HtA"/>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -205,7 +201,7 @@
                     <navigationItem key="navigationItem" id="N9w-wT-qb0">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sBo-wA-Wbx">
                             <connections>
-                                <segue destination="tIl-td-U4c" kind="show" id="P4d-v5-C3d"/>
+                                <segue destination="tIl-td-U4c" kind="show" id="SDT-dB-gXL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -217,6 +213,7 @@
         <!--Navigation Controller-->
         <scene sceneID="c68-6a-xRb">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCM-rJ-ESV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tIl-td-U4c" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qy7-Hj-8PH">
@@ -228,7 +225,6 @@
                         <segue destination="1Ah-VM-2x9" kind="relationship" relationship="rootViewController" id="ge1-gJ-wq7"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCM-rJ-ESV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5401" y="-754"/>
         </scene>
@@ -293,7 +289,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ciY-EN-Oz2">
                             <connections>
                                 <action selector="addMemeButton:" destination="beY-eI-6D4" id="RKv-Re-w5q"/>
-                                <segue destination="tIl-td-U4c" kind="show" id="WtI-Pq-yrB"/>
+                                <segue destination="tIl-td-U4c" kind="show" id="565-Kx-LgA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -362,7 +358,6 @@
         <image name="Table View" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YYm-y6-P03"/>
-        <segue reference="WtI-Pq-yrB"/>
+        <segue reference="565-Kx-LgA"/>
     </inferredMetricsTieBreakers>
 </document>
