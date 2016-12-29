@@ -309,6 +309,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         present(nextController, animated: true, completion: nil)
     }
+    
+    @IBAction func saveButton(_ sender: Any) {
+        
+        let image = generateMemedImage()
+        save(memedImage: image)
+        
+        libraryButtonOutlet.isEnabled = true
+        
+    }
+    
 
     //Keyboard adjustments
     
