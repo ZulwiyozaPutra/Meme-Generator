@@ -131,7 +131,6 @@
                         <outlet property="equalWidthConstraint" destination="m4K-qv-EH3" id="DIL-QN-h3p"/>
                         <outlet property="helpingInformationLabel" destination="PSX-DX-cc1" id="8DQ-8Q-CWa"/>
                         <outlet property="imagePickedView" destination="a1d-TK-rKV" id="7Sf-Wa-G7N"/>
-                        <outlet property="libraryButtonOutlet" destination="o63-pJ-HtA" id="Y5b-Dl-2Ei"/>
                         <outlet property="mainView" destination="CeS-hv-PFM" id="Jih-Fc-nEA"/>
                         <outlet property="saveButtonOutlet" destination="jel-Wm-Fwm" id="9zw-Qq-JJe"/>
                         <outlet property="shareButtonOutlet" destination="tHo-nU-1ZV" id="4OO-i5-XuS"/>

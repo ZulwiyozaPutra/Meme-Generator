@@ -25,7 +25,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var saveButtonOutlet: UIBarButtonItem!
-    @IBOutlet weak var libraryButtonOutlet: UIBarButtonItem!
     
     //Constraints for Image View
     @IBOutlet weak var equalWidthConstraint: NSLayoutConstraint!
@@ -69,7 +68,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         bottomCaptionTextField.delegate = self
         
         viewSetup(initialStatus: true)
-        libraryButtonOutlet.isEnabled = false
         textFieldTextAttributesPotraitSetup()
     }
     
@@ -247,9 +245,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(meme)
-        
-        
-        libraryButtonOutlet.isEnabled = true
     }
     
     //ACTIONS//
@@ -328,8 +323,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         alertController.addAction(destructiveAction)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
-        
-        libraryButtonOutlet.isEnabled = true
         
     }    
 

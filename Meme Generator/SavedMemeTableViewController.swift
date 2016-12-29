@@ -13,7 +13,7 @@ class SavedMemeTableViewController: UITableViewController {
     
     var memes: [Meme]!
     
-    func noDataLabel(message: String) -> UILabel {
+    func noDataLabelSetup(message: String) -> UILabel {
         let frame = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height)
         let label = UILabel(frame: frame)
         label.text             = message
@@ -26,20 +26,18 @@ class SavedMemeTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         var numOfSections: Int = 0
         
-        if memes == nil {
+        if memes?.count == 0 {
             
-            tableView.backgroundView = noDataLabel(message: "Tap + to create a new meme")
+            tableView.backgroundView = noDataLabelSetup(message: "Tap + to create a new meme")
             tableView.separatorStyle = .none
             
         } else {
             
             tableView.separatorStyle = .singleLine
             numOfSections = 1
-            tableView.backgroundView = noDataLabel(message: "")
-
+            tableView.backgroundView = noDataLabelSetup(message: "")
             
-        }
-        
+        } 
         return numOfSections
     }
 

@@ -17,6 +17,7 @@ class MemeDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         memeDetailImageView.image = meme?.memedImage
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     @IBAction func shareButton(_ sender: Any) {
@@ -32,4 +33,6 @@ class MemeDetailViewController: UIViewController {
             }
         }
     }
+    
+    
 }
