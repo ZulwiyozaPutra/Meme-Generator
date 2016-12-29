@@ -13,27 +13,33 @@ class SavedMemeTableViewController: UITableViewController {
     
     var memes: [Meme]!
     
+    func noDataLabel(message: String) -> UILabel {
+        let frame = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height)
+        let label = UILabel(frame: frame)
+        label.text             = message
+        label.textColor        = UIColor.black
+        label.textAlignment    = .center
+        
+        return label
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         var numOfSections: Int = 0
+        
         if memes == nil {
+            
+            tableView.backgroundView = noDataLabel(message: "Tap + to create a new meme")
+            tableView.separatorStyle = .none
+            
+        } else {
             
             tableView.separatorStyle = .singleLine
             numOfSections = 1
-//            tableView.backgroundView = nil
+            tableView.backgroundView = noDataLabel(message: "")
 
-        } else if memes.count == 0 {
             
-            let frame = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height)
-            let label = UILabel(frame: frame)
-            label.text             = "Tap + to create a new meme"
-            label.textColor        = UIColor.black
-            label.textAlignment    = .center
-            tableView.backgroundView = label
-            tableView.separatorStyle = .none
-
-        } else {
-            numOfSections = 1
         }
+        
         return numOfSections
     }
 
@@ -61,6 +67,7 @@ class SavedMemeTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         memes = appDelegate.memes
+        print("\(memes.count) of memes is available")
         tableView.reloadData()
     }
     

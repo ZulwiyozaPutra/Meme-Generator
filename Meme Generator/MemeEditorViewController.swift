@@ -315,10 +315,23 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let image = generateMemedImage()
         save(memedImage: image)
         
+        let alertController = UIAlertController(title: "Saved", message: "Your meme is saved to Meme Library", preferredStyle: UIAlertControllerStyle.alert)
+        let destructiveAction = UIAlertAction(title: "Open Library", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
+            print("Destructive")
+            self.performSegue(withIdentifier: "ToMemeLibrarySegue", sender: sender)
+        }
+        
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            print("OK")
+            
+        }
+        alertController.addAction(destructiveAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+        
         libraryButtonOutlet.isEnabled = true
         
-    }
-    
+    }    
 
     //Keyboard adjustments
     
@@ -369,7 +382,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let image = generateMemedImage()
-        save(memedImage: image)
+//        if shareButtonOutlet.action
+//        let image = generateMemedImage()
+//        save(memedImage: image)
     }
 }

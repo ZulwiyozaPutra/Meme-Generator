@@ -15,12 +15,12 @@ class SavedMemeCollectionViewController: UICollectionViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         var numOfSections: Int = 0
-        if memes != nil {
+        if memes == nil {
             
             numOfSections = 1
-            collectionView.backgroundView = nil
+//            collectionView.backgroundView = nil
             
-        } else {
+        } else if memes.count == 0 {
             
             let frame = CGRect(x: 0, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height)
             let label = UILabel(frame: frame)
@@ -29,6 +29,9 @@ class SavedMemeCollectionViewController: UICollectionViewController {
             label.textAlignment    = .center
             collectionView.backgroundView = label
 
+        } else {
+            numOfSections = 1
+            
         }
         return numOfSections
     }

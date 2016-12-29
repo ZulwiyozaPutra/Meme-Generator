@@ -34,7 +34,6 @@
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a1d-TK-rKV">
                                         <rect key="frame" x="0.0" y="67.5" width="375" height="375"/>
-                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="a1d-TK-rKV" secondAttribute="height" multiplier="1:1" id="GO9-f5-dFD"/>
                                         </constraints>
@@ -85,9 +84,9 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="UZ6-e1-Np3"/>
-                                    <barButtonItem systemItem="organize" id="o63-pJ-HtA">
+                                    <barButtonItem title="Meme Library" id="o63-pJ-HtA">
                                         <connections>
-                                            <segue destination="3Vo-TY-Ssz" kind="show" id="kh5-vl-hC9"/>
+                                            <segue destination="3Vo-TY-Ssz" kind="show" identifier="ToMemeLibrarySegue" id="kh5-vl-hC9"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -146,10 +145,10 @@
             </objects>
             <point key="canvasLocation" x="8703" y="394"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Meme Library-->
         <scene sceneID="D4j-5q-mun">
             <objects>
-                <tabBarController id="3Vo-TY-Ssz" sceneMemberID="viewController">
+                <tabBarController title="Meme Library" id="3Vo-TY-Ssz" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="wV0-Nz-rBU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -274,12 +273,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7dz-QA-hlH">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7dz-QA-hlH">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="7dz-QA-hlH" firstAttribute="leading" secondItem="3Wf-NB-qRC" secondAttribute="leading" id="5uE-SX-sDs"/>
+                                    <constraint firstItem="7dz-QA-hlH" firstAttribute="top" secondItem="3Wf-NB-qRC" secondAttribute="top" id="PtD-et-Hfv"/>
+                                    <constraint firstAttribute="bottom" secondItem="7dz-QA-hlH" secondAttribute="bottom" id="n3M-QO-BUI"/>
+                                    <constraint firstAttribute="trailing" secondItem="7dz-QA-hlH" secondAttribute="trailing" id="wBk-1M-VMg"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="memeImageView" destination="7dz-QA-hlH" id="8XX-0J-abt"/>
                                 </connections>
@@ -318,16 +322,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HXd-IV-ZuH">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="voR-9D-1H3">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="uYj-Xg-iBi"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="action" id="rDc-df-IyU">
+                                        <connections>
+                                            <action selector="shareButton:" destination="Emk-uc-OCd" id="IK2-eP-yPe"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HXd-IV-ZuH">
+                                <rect key="frame" x="0.0" y="145.5" width="375" height="375"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HXd-IV-ZuH" secondAttribute="height" multiplier="1:1" id="ddW-0F-AgZ"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="HXd-IV-ZuH" firstAttribute="centerY" secondItem="cfv-z6-LFa" secondAttribute="centerY" id="DKx-qQ-EZr"/>
+                            <constraint firstItem="voR-9D-1H3" firstAttribute="leading" secondItem="cfv-z6-LFa" secondAttribute="leading" id="DLS-t2-7pB"/>
+                            <constraint firstItem="HXd-IV-ZuH" firstAttribute="centerX" secondItem="cfv-z6-LFa" secondAttribute="centerX" id="hzj-0y-fV6"/>
                             <constraint firstAttribute="trailing" secondItem="HXd-IV-ZuH" secondAttribute="trailing" id="iXr-gQ-PS9"/>
-                            <constraint firstItem="HXd-IV-ZuH" firstAttribute="top" secondItem="cfv-z6-LFa" secondAttribute="top" id="lOq-qs-vaB"/>
-                            <constraint firstAttribute="bottom" secondItem="HXd-IV-ZuH" secondAttribute="bottom" id="nOG-PN-2Fu"/>
+                            <constraint firstItem="dWj-mE-I2c" firstAttribute="top" secondItem="voR-9D-1H3" secondAttribute="bottom" id="qTS-OO-8wG"/>
                             <constraint firstItem="HXd-IV-ZuH" firstAttribute="leading" secondItem="cfv-z6-LFa" secondAttribute="leading" id="qTo-Av-mFb"/>
+                            <constraint firstAttribute="trailing" secondItem="voR-9D-1H3" secondAttribute="trailing" id="vOp-3G-qoD"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="N8q-UC-Jz2">
@@ -339,7 +362,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dic-es-2SM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9590" y="395"/>
+            <point key="canvasLocation" x="9589.6000000000004" y="394.45277361319341"/>
         </scene>
         <!--Collection View-->
         <scene sceneID="fJq-Ck-j3i">
@@ -366,6 +389,6 @@
         <image name="Table View" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SDT-dB-gXL"/>
+        <segue reference="565-Kx-LgA"/>
     </inferredMetricsTieBreakers>
 </document>

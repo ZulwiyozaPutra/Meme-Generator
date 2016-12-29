@@ -19,5 +19,17 @@ class MemeDetailViewController: UIViewController {
         memeDetailImageView.image = meme?.memedImage
     }
     
-    
+    @IBAction func shareButton(_ sender: Any) {
+        
+        let image = memeDetailImageView.image
+        
+        let nextController = UIActivityViewController(activityItems: [image!], applicationActivities: nil)
+        
+        nextController.completionWithItemsHandler = {
+            (activityType, completed, returnedItems, activityError) in
+            if completed {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
 }
