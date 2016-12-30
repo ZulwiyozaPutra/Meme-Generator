@@ -26,6 +26,8 @@ class SavedMemeTableViewController: UITableViewController, UIImagePickerControll
     
     @IBAction func addMeme(_ sender: Any) {
         
+        /*
+        
         //Create instance of UIAlertController with title and message
         let importController = UIAlertController()
         importController.title = "Import image"
@@ -60,6 +62,8 @@ class SavedMemeTableViewController: UITableViewController, UIImagePickerControll
         
         //Tells importButton to present importController when it is tapped
         self.present(importController, animated: true, completion: nil)
+        
+        */
         
         
         let memeEditor = storyboard!.instantiateViewController(withIdentifier: "MemeEditorRootViewController") as! UINavigationController
