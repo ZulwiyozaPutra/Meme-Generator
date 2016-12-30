@@ -222,8 +222,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         // Render view to an image
         
-        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 3.0)
-        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        UIGraphicsBeginImageContextWithOptions(self.imagePickedView.bounds.size, false, 3.0)
+        view.drawHierarchy(in: self.imagePickedView.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         //TODO: Show toolbar and navbar

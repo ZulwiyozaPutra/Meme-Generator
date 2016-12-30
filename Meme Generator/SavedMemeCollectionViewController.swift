@@ -16,8 +16,9 @@ class SavedMemeCollectionViewController: UICollectionViewController {
     func noDataLabelSetup(message: String) -> UILabel {
         let frame = CGRect(x: 0, y: 0, width: (collectionView?.bounds.size.width)!, height: (collectionView?.bounds.size.height)!)
         let label = UILabel(frame: frame)
+        label.backgroundColor = UIColor.lightGray
         label.text             = message
-        label.textColor        = UIColor.black
+        label.textColor        = UIColor.darkGray
         label.textAlignment    = .center
         
         return label
