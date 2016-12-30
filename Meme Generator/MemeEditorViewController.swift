@@ -24,8 +24,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var toolbar: UIToolbar!
-    @IBOutlet weak var saveButtonOutlet: UIBarButtonItem!
-    
+
     //Constraints for Image View
     @IBOutlet weak var equalWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var equalHeightConstraint: NSLayoutConstraint!
@@ -187,7 +186,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         bottomCaptionTextField.isHidden = initialStatus
         helpingInformationLabel.isHidden = !initialStatus
         shareButtonOutlet.isEnabled = !initialStatus
-        saveButtonOutlet.isEnabled = !initialStatus
     }
     
     //Setup UIImagePickerController
@@ -305,26 +303,26 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         present(nextController, animated: true, completion: nil)
     }
     
-    @IBAction func saveButton(_ sender: Any) {
-        
-        let image = generateMemedImage()
-        save(memedImage: image)
-        
-        let alertController = UIAlertController(title: "Saved", message: "Your meme is saved to Meme Library", preferredStyle: UIAlertControllerStyle.alert)
-        let destructiveAction = UIAlertAction(title: "Open Library", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
-            print("Destructive")
-            self.performSegue(withIdentifier: "ToMemeLibrarySegue", sender: sender)
-        }
-        
-        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-            print("OK")
-            
-        }
-        alertController.addAction(destructiveAction)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
-        
-    }    
+//    @IBAction func saveButton(_ sender: Any) {
+//        
+//        let image = generateMemedImage()
+//        save(memedImage: image)
+//        
+//        let alertController = UIAlertController(title: "Saved", message: "Your meme is saved to Meme Library", preferredStyle: UIAlertControllerStyle.alert)
+//        let destructiveAction = UIAlertAction(title: "Open Library", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
+//            print("Destructive")
+//            self.performSegue(withIdentifier: "ToMemeLibrarySegue", sender: sender)
+//        }
+//        
+//        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+//            print("OK")
+//            
+//        }
+//        alertController.addAction(destructiveAction)
+//        alertController.addAction(okAction)
+//        self.present(alertController, animated: true, completion: nil)
+//        
+//    }    
 
     //Keyboard adjustments
     

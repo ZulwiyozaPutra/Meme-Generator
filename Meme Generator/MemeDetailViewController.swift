@@ -32,6 +32,8 @@ class MemeDetailViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             }
         }
+        
+        present(nextController, animated: true, completion: nil)
     }
     
     

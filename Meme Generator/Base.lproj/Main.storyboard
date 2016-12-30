@@ -112,11 +112,6 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Editor" id="2cK-BB-KTR" customClass="memec">
-                        <barButtonItem key="leftBarButtonItem" systemItem="save" id="jel-Wm-Fwm">
-                            <connections>
-                                <action selector="saveButton:" destination="1Ah-VM-2x9" id="l1a-U1-VIy"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nCn-mk-Oah">
                             <connections>
                                 <action selector="importButton:" destination="1Ah-VM-2x9" id="by9-nu-BGk"/>
@@ -132,7 +127,6 @@
                         <outlet property="helpingInformationLabel" destination="PSX-DX-cc1" id="8DQ-8Q-CWa"/>
                         <outlet property="imagePickedView" destination="a1d-TK-rKV" id="7Sf-Wa-G7N"/>
                         <outlet property="mainView" destination="CeS-hv-PFM" id="Jih-Fc-nEA"/>
-                        <outlet property="saveButtonOutlet" destination="jel-Wm-Fwm" id="9zw-Qq-JJe"/>
                         <outlet property="shareButtonOutlet" destination="tHo-nU-1ZV" id="4OO-i5-XuS"/>
                         <outlet property="toolbar" destination="Oby-uw-k6L" id="vuJ-Xt-zc6"/>
                         <outlet property="topCaptionTextField" destination="N7H-1W-XQb" id="PwY-ES-ORD"/>
@@ -162,7 +156,7 @@
             </objects>
             <point key="canvasLocation" x="4100" y="415"/>
         </scene>
-        <!--Saved Meme Table View Controller-->
+        <!--Meme Library-->
         <scene sceneID="Ivz-ek-AgW">
             <objects>
                 <tableViewController storyboardIdentifier="SavedMemeTableViewController" id="7Cr-aw-rhE" customClass="SavedMemeTableViewController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
@@ -201,7 +195,7 @@
                             <outlet property="delegate" destination="7Cr-aw-rhE" id="cWj-Or-sYY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="N9w-wT-qb0">
+                    <navigationItem key="navigationItem" title="Meme Library" id="N9w-wT-qb0">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sBo-wA-Wbx">
                             <connections>
                                 <action selector="addMeme:" destination="7Cr-aw-rhE" id="dKB-0w-1mI"/>
@@ -216,7 +210,6 @@
         <!--Navigation Controller-->
         <scene sceneID="c68-6a-xRb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCM-rJ-ESV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="MemeEditorRootViewController" automaticallyAdjustsScrollViewInsets="NO" id="tIl-td-U4c" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qy7-Hj-8PH">
@@ -228,6 +221,7 @@
                         <segue destination="1Ah-VM-2x9" kind="relationship" relationship="rootViewController" id="ge1-gJ-wq7"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCM-rJ-ESV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7574" y="394"/>
         </scene>
@@ -250,7 +244,7 @@
             </objects>
             <point key="canvasLocation" x="5401" y="75"/>
         </scene>
-        <!--Saved Meme Collection View Controller-->
+        <!--Meme Library-->
         <scene sceneID="ELP-6h-Q7b">
             <objects>
                 <collectionViewController id="beY-eI-6D4" customClass="SavedMemeCollectionViewController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
@@ -293,7 +287,7 @@
                             <outlet property="delegate" destination="beY-eI-6D4" id="NqX-rH-40x"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="e7h-1T-k8t">
+                    <navigationItem key="navigationItem" title="Meme Library" id="e7h-1T-k8t">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ciY-EN-Oz2">
                             <connections>
                                 <action selector="addMemeButton:" destination="beY-eI-6D4" id="RKv-Re-w5q"/>
