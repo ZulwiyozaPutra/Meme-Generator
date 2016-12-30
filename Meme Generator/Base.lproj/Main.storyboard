@@ -165,11 +165,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeTableViewCell" textLabel="Snf-De-kB7" detailTextLabel="RAg-KN-ebe" rowHeight="130" style="IBUITableViewCellStyleSubtitle" id="Tlr-7E-6FG" customClass="SavedMemeTable">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MemeTableViewCell" textLabel="Snf-De-kB7" detailTextLabel="RAg-KN-ebe" rowHeight="130" style="IBUITableViewCellStyleSubtitle" id="Tlr-7E-6FG" customClass="SavedMemeTable">
                                 <rect key="frame" x="0.0" y="28" width="375" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tlr-7E-6FG" id="cLy-TS-LpT">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="129.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="129.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Snf-De-kB7">
@@ -345,16 +345,14 @@
                             <constraint firstAttribute="trailing" secondItem="voR-9D-1H3" secondAttribute="trailing" id="vOp-3G-qoD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="N8q-UC-Jz2">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="tMc-nd-6VX"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="N8q-UC-Jz2"/>
                     <connections>
                         <outlet property="memeDetailImageView" destination="HXd-IV-ZuH" id="3W9-Pa-ezd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dic-es-2SM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9589.6000000000004" y="394.45277361319341"/>
+            <point key="canvasLocation" x="10528.799999999999" y="394.45277361319341"/>
         </scene>
         <!--Collection View-->
         <scene sceneID="fJq-Ck-j3i">

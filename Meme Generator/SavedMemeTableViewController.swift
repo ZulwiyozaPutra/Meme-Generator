@@ -54,6 +54,7 @@ class SavedMemeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")
         let meme = memes[indexPath.row]
         cell?.textLabel?.text = meme.topCaption
+        cell?.detailTextLabel?.text = meme.bottomCaption
         cell?.imageView?.image = meme.originalImage
         return cell!
     }
