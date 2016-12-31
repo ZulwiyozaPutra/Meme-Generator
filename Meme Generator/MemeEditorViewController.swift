@@ -26,6 +26,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var toolbar: UIToolbar!
 
     //Constraints for Image View
+    @IBOutlet weak var bottomCaptionConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topCaptionConstrant: NSLayoutConstraint!
     @IBOutlet weak var equalWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var equalHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var verticallyCenteredConstraint: NSLayoutConstraint!
@@ -93,17 +95,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     //For landscape mode
     func landscapeMode() {
         textFieldTextAttributesLandscapeSetup()
-        
-        view.removeConstraint(equalWidthConstraint)
-        view.addConstraint(equalHeightConstraint)
     }
     
     //For potraitmode
     func potraitMode() {
         textFieldTextAttributesPotraitSetup()
-        
-        view.removeConstraint(equalHeightConstraint)
-        view.addConstraint(equalWidthConstraint)
     }
     
     //Adjusting function
@@ -171,6 +167,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         topCaptionTextField.textAlignment = .center
         bottomCaptionTextField.defaultTextAttributes = memeTextAttributesPotrait
         bottomCaptionTextField.textAlignment = .center
+        topCaptionConstrant.constant = -200
+        bottomCaptionConstraint.constant = -200
+
     }
     
     func textFieldTextAttributesLandscapeSetup() {
@@ -178,6 +177,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         topCaptionTextField.textAlignment = .center
         bottomCaptionTextField.defaultTextAttributes = memeTextAttributesLandscape
         bottomCaptionTextField.textAlignment = .center
+        topCaptionConstrant.constant = -30
+        bottomCaptionConstraint.constant = -30
     }
     
     //Setup view
