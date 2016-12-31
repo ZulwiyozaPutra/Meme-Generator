@@ -13,11 +13,19 @@ class SavedMemeTableViewController: UITableViewController, UIImagePickerControll
     
     var memes: [Meme]!
     
-    func noDataLabelSetup(message: String) -> UILabel {
+    func noDataLabelSetup(dataIsAvailable: Bool) -> UILabel {
         let frame = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height)
         let label = UILabel(frame: frame)
-        label.backgroundColor = UIColor.lightGray
-        label.text             = message
+        
+        if dataIsAvailable == false {
+            label.text = "Tap + to create a new meme"
+            label.backgroundColor = UIColor.lightGray
+            
+        } else {
+            label.text = ""
+            label.backgroundColor = UIColor.white
+        }
+
         label.textColor        = UIColor.darkGray
         label.textAlignment    = .center
         
@@ -75,14 +83,14 @@ class SavedMemeTableViewController: UITableViewController, UIImagePickerControll
         
         if memes?.count == 0 {
             
-            tableView.backgroundView = noDataLabelSetup(message: "Tap + to create a new meme")
+            tableView.backgroundView = noDataLabelSetup(dataIsAvailable: false)
             tableView.separatorStyle = .none
             
         } else {
             
             tableView.separatorStyle = .singleLine
             numOfSections = 1
-            tableView.backgroundView = noDataLabelSetup(message: "")
+            tableView.backgroundView = noDataLabelSetup(dataIsAvailable: true)
             
         } 
         return numOfSections

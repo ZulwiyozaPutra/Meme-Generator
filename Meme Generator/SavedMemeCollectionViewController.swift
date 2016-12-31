@@ -13,28 +13,37 @@ class SavedMemeCollectionViewController: UICollectionViewController {
     
     var memes : [Meme]!
     
-    func noDataLabelSetup(message: String) -> UILabel {
+    func noDataLabelSetup(dataIsAvailable: Bool) -> UILabel {
         let frame = CGRect(x: 0, y: 0, width: (collectionView?.bounds.size.width)!, height: (collectionView?.bounds.size.height)!)
         let label = UILabel(frame: frame)
-        label.backgroundColor = UIColor.lightGray
-        label.text             = message
+        
+        if dataIsAvailable == false {
+            label.text = "Tap + to create a new meme"
+            label.backgroundColor = UIColor.lightGray
+            
+        } else {
+            label.text = ""
+            label.backgroundColor = UIColor.white
+        }
+        
         label.textColor        = UIColor.darkGray
         label.textAlignment    = .center
         
         return label
     }
     
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         var numOfSections: Int = 0
         
         if memes?.count == 0 {
             
-            collectionView.backgroundView = noDataLabelSetup(message: "Tap + to create a new meme")
+            collectionView.backgroundView = noDataLabelSetup(dataIsAvailable: false)
             
         } else {
             
             numOfSections = 1
-            collectionView.backgroundView = noDataLabelSetup(message: "")
+            collectionView.backgroundView = noDataLabelSetup(dataIsAvailable: true)
             
         }
 
