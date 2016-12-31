@@ -56,7 +56,9 @@ class SavedMemeCollectionViewController: UICollectionViewController {
         let space: CGFloat = 3.0
         let dimension: CGFloat
         
-        if orientation == UIDeviceOrientation.portrait {
+        if orientation == .portrait {
+            dimension = (view.frame.size.width - (2 * space)) / 3.0
+        } else if orientation == .portraitUpsideDown {
             dimension = (view.frame.size.width - (2 * space)) / 3.0
         } else {
             dimension = (view.frame.size.height - (2 * space)) / 3.0

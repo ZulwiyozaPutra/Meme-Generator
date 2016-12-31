@@ -83,6 +83,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         switch UIDevice.current.orientation {
         case .portrait:
             potraitMode()
+        case .portraitUpsideDown:
+            potraitMode()
         default:
             landscapeMode()
         }
@@ -160,15 +162,26 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     
     //USER INTERFACE SETUP//
+    //TODO setup top constraint margin
 
     //Setup Text Field Text Attributes
     func textFieldTextAttributesPotraitSetup() {
+        
+        let blankSpaceDistance = containerView.frame.height - containerView.frame.width
+        let captionMarginWithEdge = containerView.frame.width * 1 / 100
+        
+        print(blankSpaceDistance)
+        print(captionMarginWithEdge)
+        
         topCaptionTextField.defaultTextAttributes = memeTextAttributesPotrait
         topCaptionTextField.textAlignment = .center
         bottomCaptionTextField.defaultTextAttributes = memeTextAttributesPotrait
         bottomCaptionTextField.textAlignment = .center
-        topCaptionConstrant.constant = -200
-        bottomCaptionConstraint.constant = -200
+        topCaptionConstrant.constant = -(blankSpaceDistance + captionMarginWithEdge)
+        print(topCaptionConstrant.constant)
+        bottomCaptionConstraint.constant = -(blankSpaceDistance + captionMarginWithEdge)
+        print(bottomCaptionConstraint.constant)
+
 
     }
     
