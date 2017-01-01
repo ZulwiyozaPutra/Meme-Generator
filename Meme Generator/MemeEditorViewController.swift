@@ -170,18 +170,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let blankSpace = containerView.frame.height - containerView.frame.width
         let blankSpaceDistance = blankSpace/2
         let captionMarginWithEdge = containerView.frame.width * 2 / 100
-        print(blankSpace)
-        print(blankSpaceDistance)
-        print(captionMarginWithEdge)
+
         
         topCaptionTextField.defaultTextAttributes = memeTextAttributesPotrait
         topCaptionTextField.textAlignment = .center
         bottomCaptionTextField.defaultTextAttributes = memeTextAttributesPotrait
         bottomCaptionTextField.textAlignment = .center
         topCaptionConstrant.constant = -(blankSpaceDistance + captionMarginWithEdge)
-        print(topCaptionConstrant.constant)
+
         bottomCaptionConstraint.constant = -(blankSpaceDistance + captionMarginWithEdge)
-        print(bottomCaptionConstraint.constant)
+
 
 
     }
@@ -189,11 +187,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func textFieldTextAttributesLandscapeSetup() {
         
         let blankSpace = containerView.frame.width - containerView.frame.height
-        let blankSpaceDistance = blankSpace/2
         let captionMarginWithEdge = containerView.frame.height * 2 / 100
-        print(blankSpace)
-        print(blankSpaceDistance)
-        print(captionMarginWithEdge)
+
         
         topCaptionTextField.defaultTextAttributes = memeTextAttributesLandscape
         topCaptionTextField.textAlignment = .center
@@ -246,7 +241,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // Render view to an image
         
         UIGraphicsBeginImageContextWithOptions(self.imagePickedView.bounds.size, false, 3.0)
-        view.drawHierarchy(in: self.imagePickedView.frame, afterScreenUpdates: true)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         //TODO: Show toolbar and navbar
