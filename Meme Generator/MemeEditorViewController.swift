@@ -166,8 +166,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
 
     //Setup Text Field Text Attributes
     func textFieldTextAttributesPotraitSetup() {
-        
-        let blankSpace = containerView.frame.height - containerView.frame.width
+
+        let blankSpace = imagePickedView.frame.height - containerView.frame.width
         let blankSpaceDistance = blankSpace/2
         let captionMarginWithEdge = containerView.frame.width * 2 / 100
 
@@ -187,9 +187,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func textFieldTextAttributesLandscapeSetup() {
         
         let blankSpace = containerView.frame.width - containerView.frame.height
+        let blankSpaceDistance = blankSpace/2
         let captionMarginWithEdge = containerView.frame.height * 2 / 100
 
-        
         topCaptionTextField.defaultTextAttributes = memeTextAttributesLandscape
         topCaptionTextField.textAlignment = .center
         bottomCaptionTextField.defaultTextAttributes = memeTextAttributesLandscape
