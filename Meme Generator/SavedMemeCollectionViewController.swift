@@ -12,6 +12,12 @@ import UIKit
 class SavedMemeCollectionViewController: UICollectionViewController {
     
     var memes : [Meme]!
+    @IBAction func addMeme(_ sender: Any) {
+        
+        let memeEditor = storyboard!.instantiateViewController(withIdentifier: "MemeEditorRootViewController") as! UINavigationController
+        self.present(memeEditor, animated: true, completion: nil)
+        
+    }
     
     func noDataLabelSetup(dataIsAvailable: Bool) -> UILabel {
         let frame = CGRect(x: 0, y: 0, width: (collectionView?.bounds.size.width)!, height: (collectionView?.bounds.size.height)!)

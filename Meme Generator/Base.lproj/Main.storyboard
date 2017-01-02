@@ -272,7 +272,7 @@
                     <navigationItem key="navigationItem" title="Meme Library" id="e7h-1T-k8t">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ciY-EN-Oz2">
                             <connections>
-                                <action selector="addMemeButton:" destination="beY-eI-6D4" id="RKv-Re-w5q"/>
+                                <action selector="addMeme:" destination="beY-eI-6D4" id="mIm-R0-8Sz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
