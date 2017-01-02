@@ -9,14 +9,11 @@
 import Foundation
 import UIKit
 
-class SavedMemeCollectionViewController: UICollectionViewController {
+class SavedMemeCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var memes : [Meme]!
-    @IBAction func addMeme(_ sender: Any) {
-        let memeEditor = storyboard!.instantiateViewController(withIdentifier: "MemeEditorRootViewController") as! UINavigationController
-        self.present(memeEditor, animated: true, completion: nil)
-    }
     
+    //If no Data available
     func noDataLabelSetup(dataIsAvailable: Bool) -> UILabel {
         let frame = CGRect(x: 0, y: 0, width: (collectionView?.bounds.size.width)!, height: (collectionView?.bounds.size.height)!)
         let label = UILabel(frame: frame)
@@ -36,6 +33,88 @@ class SavedMemeCollectionViewController: UICollectionViewController {
         return label
     }
     
+    @IBAction func addMeme(_ sender: Any) {
+        
+        // Create instance of UIAlertController with title and message
+        let importController = UIAlertController()
+        
+        // Setup import from Photo Library Action
+        let importFromPhotoLibraryAction = UIAlertAction(title: "Import from Photo Library", style: UIAlertActionStyle.default) {
+            action in
+            importController.dismiss(animated: true, completion: nil)
+            self.pickAnImageFromMediaLibrary()
+        }
+        
+        // Setup import from camera action
+        let importFromCameraAction = UIAlertAction(title: "Take a Picture", style: UIAlertActionStyle.default) {
+            action in
+            importController.dismiss(animated: true, completion: nil)
+            self.pickAnImageFromCamera()
+        }
+        
+        importFromCameraAction.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        
+        // Setup cancel button
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+            action in
+            importController.dismiss(animated: true, completion: nil)
+        }
+        
+        // Tells importButton to add actions
+        importController.addAction(importFromPhotoLibraryAction)
+        importController.addAction(importFromCameraAction)
+        importController.addAction(cancelAction)
+        
+        
+        // Tells importButton to present importController when it is tapped
+        self.present(importController, animated: true, completion: nil)
+    }
+    
+    //Tells the delegate that the user picked a still image or movie.
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let memeEditorViewController = storyboard.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
+        let navigationController = UINavigationController(rootViewController: memeEditorViewController)
+        
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            
+            let object = UIApplication.shared.delegate
+            let appDelegate = object as! AppDelegate
+            appDelegate.memeImageToEdit = image
+            
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
+        
+    }
+    
+    //Tells the delegate that the user cancelled the pick operation.
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    //HELPERS//
+    
+    //Setup UIImagePickerController
+    func setupImagePickerController(sourceType: UIImagePickerControllerSourceType) -> Void {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.allowsEditing = true
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = sourceType
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    //Picking an image action from Media Library
+    func pickAnImageFromMediaLibrary() {
+        setupImagePickerController(sourceType: .photoLibrary)
+    }
+    
+    //Picking an image action from Camera
+    func pickAnImageFromCamera() {
+        setupImagePickerController(sourceType: .camera)
+    }
+
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         var numOfSections: Int = 0

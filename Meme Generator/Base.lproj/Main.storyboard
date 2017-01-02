@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Editor-->
+        <!--MemeEditorViewController-->
         <scene sceneID="UKQ-ji-EHP">
             <objects>
-                <viewController storyboardIdentifier="MemeEditorViewController" hidesBottomBarWhenPushed="YES" id="1Ah-VM-2x9" customClass="MemeEditorViewController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditorViewController" title="MemeEditorViewController" hidesBottomBarWhenPushed="YES" id="1Ah-VM-2x9" customClass="MemeEditorViewController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KFG-cz-bqV"/>
                         <viewControllerLayoutGuide type="bottom" id="qWy-mL-nPb"/>
@@ -97,6 +97,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Editor" id="2cK-BB-KTR" customClass="memec">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="pCz-Eq-Ljb">
+                            <connections>
+                                <action selector="cancelButton:" destination="1Ah-VM-2x9" id="t37-bj-vP5"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nCn-mk-Oah">
                             <connections>
                                 <action selector="importButton:" destination="1Ah-VM-2x9" id="by9-nu-BGk"/>
@@ -189,10 +194,11 @@
             </objects>
             <point key="canvasLocation" x="6341.6000000000004" y="73.313343328335833"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Editor Navigation Controller-->
         <scene sceneID="c68-6a-xRb">
             <objects>
-                <navigationController storyboardIdentifier="MemeEditorRootViewController" automaticallyAdjustsScrollViewInsets="NO" id="tIl-td-U4c" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCM-rJ-ESV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="MemeEditorRootViewController" automaticallyAdjustsScrollViewInsets="NO" id="tIl-td-U4c" customClass="EditorNavigationController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qy7-Hj-8PH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -203,7 +209,6 @@
                         <segue destination="1Ah-VM-2x9" kind="relationship" relationship="rootViewController" id="ge1-gJ-wq7"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCM-rJ-ESV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7574" y="394"/>
         </scene>

@@ -14,6 +14,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     //VARIABLES//
     
+    
+    
+    
     var updatedY = CGFloat()
     
     @IBOutlet weak var imagePickedView: UIImageView!
@@ -54,9 +57,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     //Overriding Functions
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        imagePickedView.image = appDelegate.memeImageToEdit
         
         updatedY = view.frame.origin.y - self.imagePickedView.frame.origin.y
+        
+        if (imagePickedView.image != nil) {
+            viewSetup(initialStatus: false)
+        }
         
         subscribeToKeyboardNotifications()
         subscribeToOrientationNotification()
@@ -64,6 +72,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         topCaptionTextField.delegate = self
         bottomCaptionTextField.delegate = self
@@ -265,13 +274,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     //ACTIONS//
     
+    @IBAction func cancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
     //importButton action function
     @IBAction func importButton(_ sender: Any) {
         
         //Create instance of UIAlertController with title and message
         let importController = UIAlertController()
-        importController.title = "Import image"
-        importController.message = "Pick your best image to generate meme"
         
         //Setup import from Photo Library Action
         let importFromPhotoLibraryAction = UIAlertAction(title: "Import from Photo Library", style: UIAlertActionStyle.default) {
@@ -311,7 +322,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let nextController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         
         nextController.completionWithItemsHandler = {
-            (activityType, completed, returnedItems, activityError) in
+            (_, completed, _, _) in
             if completed {
                 self.save(memedImage: image)
                 self.dismiss(animated: true, completion: nil)
@@ -320,27 +331,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         present(nextController, animated: true, completion: nil)
     }
-    
-//    @IBAction func saveButton(_ sender: Any) {
-//        
-//        let image = generateMemedImage()
-//        save(memedImage: image)
-//        
-//        let alertController = UIAlertController(title: "Saved", message: "Your meme is saved to Meme Library", preferredStyle: UIAlertControllerStyle.alert)
-//        let destructiveAction = UIAlertAction(title: "Open Library", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
-//            print("Destructive")
-//            self.performSegue(withIdentifier: "ToMemeLibrarySegue", sender: sender)
-//        }
-//        
-//        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-//            print("OK")
-//            
-//        }
-//        alertController.addAction(destructiveAction)
-//        alertController.addAction(okAction)
-//        self.present(alertController, animated: true, completion: nil)
-//        
-//    }    
 
     //Keyboard adjustments
     

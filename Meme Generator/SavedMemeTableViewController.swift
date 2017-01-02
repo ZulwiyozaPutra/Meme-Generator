@@ -34,21 +34,17 @@ class SavedMemeTableViewController: UITableViewController, UIImagePickerControll
     
     @IBAction func addMeme(_ sender: Any) {
         
-        /*
-        
-        //Create instance of UIAlertController with title and message
+        // Create instance of UIAlertController with title and message
         let importController = UIAlertController()
-        importController.title = "Import image"
-        importController.message = "Pick your best image to generate meme"
         
-        //Setup import from Photo Library Action
+        // Setup import from Photo Library Action
         let importFromPhotoLibraryAction = UIAlertAction(title: "Import from Photo Library", style: UIAlertActionStyle.default) {
             action in
             importController.dismiss(animated: true, completion: nil)
             self.pickAnImageFromMediaLibrary()
         }
         
-        //Setup import from camera action
+        // Setup import from camera action
         let importFromCameraAction = UIAlertAction(title: "Take a Picture", style: UIAlertActionStyle.default) {
             action in
             importController.dismiss(animated: true, completion: nil)
@@ -57,25 +53,21 @@ class SavedMemeTableViewController: UITableViewController, UIImagePickerControll
         
         importFromCameraAction.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
-        //Setup cancel button
+        // Setup cancel button
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
             action in
             importController.dismiss(animated: true, completion: nil)
         }
         
-        //Tells importButton to add actions
+        // Tells importButton to add actions
         importController.addAction(importFromPhotoLibraryAction)
         importController.addAction(importFromCameraAction)
         importController.addAction(cancelAction)
+
         
-        //Tells importButton to present importController when it is tapped
+        // Tells importButton to present importController when it is tapped
         self.present(importController, animated: true, completion: nil)
         
-        */
-        
-        
-        let memeEditor = storyboard!.instantiateViewController(withIdentifier: "MemeEditorRootViewController") as! UINavigationController
-        self.present(memeEditor, animated: true, completion: nil)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -117,16 +109,23 @@ class SavedMemeTableViewController: UITableViewController, UIImagePickerControll
         
     }
     
+    
     //Tells the delegate that the user picked a still image or movie.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let memeEditorViewController = storyboard.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
+        let navigationController = UINavigationController(rootViewController: memeEditorViewController)
         
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             
-            let memeEditorViewController = storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
-            memeEditorViewController.imagePickedView.image = image
+            let object = UIApplication.shared.delegate
+            let appDelegate = object as! AppDelegate
+            appDelegate.memeImageToEdit = image
+            
         }
         
-        dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
+        self.present(navigationController, animated: true, completion: nil)
         
     }
     

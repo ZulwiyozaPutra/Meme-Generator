@@ -13,6 +13,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var memes = [Meme]()
+    var memeImageToEdit = UIImage()
 
     var window: UIWindow?
 
