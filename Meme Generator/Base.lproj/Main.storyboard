@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -197,7 +196,6 @@
         <!--Editor Navigation Controller-->
         <scene sceneID="c68-6a-xRb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCM-rJ-ESV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="MemeEditorRootViewController" automaticallyAdjustsScrollViewInsets="NO" id="tIl-td-U4c" customClass="EditorNavigationController" customModule="Meme_Generator" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qy7-Hj-8PH">
@@ -209,6 +207,7 @@
                         <segue destination="1Ah-VM-2x9" kind="relationship" relationship="rootViewController" id="ge1-gJ-wq7"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZCM-rJ-ESV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7574" y="394"/>
         </scene>
@@ -314,17 +313,15 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HXd-IV-ZuH">
-                                <rect key="frame" x="0.0" y="146" width="375" height="375"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="HXd-IV-ZuH" secondAttribute="height" multiplier="1:1" id="ddW-0F-AgZ"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HXd-IV-ZuH">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HXd-IV-ZuH" firstAttribute="centerY" secondItem="cfv-z6-LFa" secondAttribute="centerY" id="DKx-qQ-EZr"/>
+                            <constraint firstItem="voR-9D-1H3" firstAttribute="top" secondItem="HXd-IV-ZuH" secondAttribute="bottom" id="B81-fr-1uJ"/>
                             <constraint firstItem="voR-9D-1H3" firstAttribute="leading" secondItem="cfv-z6-LFa" secondAttribute="leading" id="DLS-t2-7pB"/>
+                            <constraint firstItem="HXd-IV-ZuH" firstAttribute="top" secondItem="MzA-PL-YfF" secondAttribute="bottom" id="OJm-cU-HzW"/>
                             <constraint firstItem="HXd-IV-ZuH" firstAttribute="centerX" secondItem="cfv-z6-LFa" secondAttribute="centerX" id="hzj-0y-fV6"/>
                             <constraint firstAttribute="trailing" secondItem="HXd-IV-ZuH" secondAttribute="trailing" id="iXr-gQ-PS9"/>
                             <constraint firstItem="dWj-mE-I2c" firstAttribute="top" secondItem="voR-9D-1H3" secondAttribute="bottom" id="qTS-OO-8wG"/>
@@ -339,7 +336,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dic-es-2SM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10528.799999999999" y="394.45277361319341"/>
+            <point key="canvasLocation" x="11468" y="394.45277361319341"/>
         </scene>
         <!--Collection View-->
         <scene sceneID="fJq-Ck-j3i">
@@ -359,6 +356,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OqF-yD-utM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5401" y="788"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Lc8-jR-wQS">
+            <objects>
+                <navigationController storyboardIdentifier="DetailViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="h7m-g9-PWP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Gn-7y-clq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Emk-uc-OCd" kind="relationship" relationship="rootViewController" id="XVA-qc-oIA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NN5-T0-hRL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10528.799999999999" y="394.45277361319341"/>
         </scene>
     </scenes>
     <resources>
