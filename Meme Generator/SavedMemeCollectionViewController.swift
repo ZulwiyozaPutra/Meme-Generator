@@ -13,10 +13,8 @@ class SavedMemeCollectionViewController: UICollectionViewController {
     
     var memes : [Meme]!
     @IBAction func addMeme(_ sender: Any) {
-        
         let memeEditor = storyboard!.instantiateViewController(withIdentifier: "MemeEditorRootViewController") as! UINavigationController
         self.present(memeEditor, animated: true, completion: nil)
-        
     }
     
     func noDataLabelSetup(dataIsAvailable: Bool) -> UILabel {
