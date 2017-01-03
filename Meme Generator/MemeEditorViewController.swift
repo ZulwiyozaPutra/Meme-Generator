@@ -13,10 +13,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     
     //VARIABLES//
-    
-    
-    
-    
     var updatedY = CGFloat()
     
     @IBOutlet weak var imagePickedView: UIImageView!
