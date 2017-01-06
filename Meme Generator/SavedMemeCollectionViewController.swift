@@ -200,14 +200,12 @@ class SavedMemeCollectionViewController: UICollectionViewController, UIImagePick
     func deviceDidRotate(_ notification: NSNotification) -> Void {
         
         switch UIDevice.current.orientation {
-        case .portrait:
-            setupFlowLayout(orientation: .portrait)
-        case .portraitUpsideDown:
+        case .landscapeRight:
             setupFlowLayout(orientation: .portraitUpsideDown)
         case .landscapeLeft:
             setupFlowLayout(orientation: .landscapeLeft)
         default:
-            setupFlowLayout(orientation: .landscapeRight)
+            setupFlowLayout(orientation: .portrait)
         }
         
     }
