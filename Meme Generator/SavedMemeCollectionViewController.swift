@@ -201,7 +201,7 @@ class SavedMemeCollectionViewController: UICollectionViewController, UIImagePick
         
         switch UIDevice.current.orientation {
         case .landscapeRight:
-            setupFlowLayout(orientation: .portraitUpsideDown)
+            setupFlowLayout(orientation: .landscapeRight)
         case .landscapeLeft:
             setupFlowLayout(orientation: .landscapeLeft)
         default:
