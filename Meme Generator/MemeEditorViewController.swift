@@ -86,12 +86,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func deviceDidRotate(_ notification: NSNotification) -> Void {
         
         switch UIDevice.current.orientation {
-        case .portrait:
-            potraitMode()
-        case .portraitUpsideDown:
-            potraitMode()
-        default:
+        case .landscapeLeft:
             landscapeMode()
+        case .landscapeRight:
+            landscapeMode()
+        default:
+            potraitMode()
         }
     }
     
