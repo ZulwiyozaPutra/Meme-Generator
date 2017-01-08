@@ -207,7 +207,5 @@ class SavedMemeCollectionViewController: UICollectionViewController, UIImagePick
         default:
             setupFlowLayout(orientation: .portrait)
         }
-        
     }
-
 }
