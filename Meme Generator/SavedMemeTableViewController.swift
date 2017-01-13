@@ -25,7 +25,6 @@ class SavedMemeTableViewController: UITableViewController, UIImagePickerControll
             label.text = ""
             label.backgroundColor = UIColor.white
         }
-
         label.textColor        = UIColor.darkGray
         label.textAlignment    = .center
         
